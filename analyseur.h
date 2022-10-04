@@ -10,6 +10,13 @@
 #include <arpa/inet.h>
 #include <bits/endian.h>
 
+#include "my_ethernet.h"
+#include "my_ip.h"
+#include "my_tcp.h"
+#include "udp.h"
+#include "bootp.h"
+#include "dhcp.h"
+
 struct trameinfo
 {
     int verbose;

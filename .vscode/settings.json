@@ -4,6 +4,7 @@
         "ethernet.h": "c",
         "inet.h": "c",
         "tcp.h": "c",
-        "endian.h": "c"
+        "endian.h": "c",
+        "udp.h": "c"
     }
 }

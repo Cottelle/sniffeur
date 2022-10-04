@@ -1,8 +1,12 @@
+#ifndef BOOTP
+#define BOOTP
+
+#include "analyseur.h"
+
 #define HEADER_LEN 44   //Octet
 #define SNAME_LEN 64   //Octet
 #define FILE_LEN 128     //Octet
 //vend has no size beaucause it can be extended
-
 
 
 struct bootp
@@ -28,3 +32,16 @@ struct bootp
     const uint16_t *vend;
 
 };
+
+/**
+ * @brief Print the Bootp info depence of verbose level 
+ */
+void PrintBootp(struct bootp *bootp, int verbose);
+
+/**
+ * @brief Decode Bootp trame since packet 
+ */
+int DecodeBootp(const u_char *packet, struct trameinfo *trameinfo);
+
+
+#endif

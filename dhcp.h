@@ -1,9 +1,7 @@
 #ifndef DHCP
 #define DHCP
 
-#include <arpa/inet.h>
-#include <stdio.h>
-#include <string.h>
+#include "analyseur.h"
 
 #define SUBMASK 1
 #define TIMEOFF 2
@@ -50,19 +48,18 @@ struct dhcps
 
 /**
  * @brief Resolve DHCP's names code
- * 
- * @param code 
- * @param buf the output name
  */
 void DHCPnames_reso(int code, char *buf);
 
 
 /**
  * @brief Print the DHCP trame's info depance on verbose level 
- * 
- * @param dhcps 
- * @param verbose >1
  */
 void PrintDHCP(struct dhcps dhcps[64],int verbose);
+
+/**
+ * @brief Decode the DCHP info after the magic cookie (pointed by vend)
+ */
+void DecodeDHCP(const u_char *vend, struct trameinfo *trameinfo); // a reprendre car vend[i] = en faite sais pas.
 
 #endif

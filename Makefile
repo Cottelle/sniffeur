@@ -1,16 +1,27 @@
-CFLAGS ?= -Wall -Wextra -Werror -g
-LIB ?= -lpcap
+CC ?= "gcc"
+CFLAGS ?=-Wall -Wextra -Werror -g
+LIB ?=-lpcap
 
-analyseur: analyseur.o dhcp.o
-	gcc -o analyseur analyseur.o dhcp.o	$(CFLAGS) $(LIB)
+TARGET = analyseur
 
-analyseur.o: analyseur.c
-	gcc -o analyseur.o -c analyseur.c $(CFLAGS)
+SRC = $(wildcard *.c)
+OBJ = $(SRC:.c=.o) 
 
-dhcp.o: dhcp.c
-	gcc -o dhcp.o -c dhcp.c $(CFLAGS)
+analyseur: $(OBJ)
+	gcc -o $@ $^ $(CFLAGS) $(LIB)
+
+%.o: %.c
+	gcc -o $@ -c $^ $(CFLAGS) $(LIB)
+
+
+
+# analyseur.o: analyseur.c
+# 	gcc -o analyseur.o -c analyseur.c $(CFLAGS)
+
+# dhcp.o: dhcp.c
+# 	gcc -o dhcp.o -c dhcp.c $(CFLAGS)
 
 clean:
-	rm *.o
-	rm analyseur
+	rm -f *.o
+	rm -f analyseur
 
