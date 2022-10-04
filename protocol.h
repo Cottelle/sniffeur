@@ -7,50 +7,58 @@
 #include <stdlib.h>
 #include <net/ethernet.h>
 #include <netinet/ip.h>
+#include <netinet/ip6.h>
 #include <netinet/tcp.h>
 #include <arpa/inet.h>
 #include <bits/endian.h>
 #include <string.h>
 
+#define BLACK(op) 30*(op)
+#define RED(op) 31*(op)
+#define GREEN(op) 32*(op)
+#define YELLOW(op) 33*(op)
+#define BLUE(op) 34*(op)
+#define MAGENTA(op) 35*(op)
+#define CYAN(op) 36*(op)
+#define WHITE(op) 37*(op)
+
+
 
 struct trameinfo
 {
     int verbose;
-
+    char color;
     struct ether_header *eth_header;
-    void * header_lv2;
-    void * header_lv3;    //void * because we don't kwon the type of the header (IP ADR TCP UDP...)
-    void * header_lv4; 
-
+    void *header_lv2;
+    void *header_lv3; // void * because we don't kwon the type of the header (IP ADR TCP UDP...)
+    void *header_lv4;
 };
 
+
 /**
- * @brief Print major info of the current trame with the ip and port
+ * @brief Print major info of the current trame with the ip and port. Color is a bool indicate if the text is will colored
  */
-void Synthese(struct ip *ip, int SP, int DP);
+void Synthese(struct ip *ip, int SP, int DP,char color);
 
 /* ---------------------------------------------------------bootp--------------------------------------------------------------------------------------
-*/
+ */
 
-#define HEADER_LEN 44   //Octet
-#define SNAME_LEN 64   //Octet
-#define FILE_LEN 128     //Octet
-//vend has no size beaucause it can be extended
-
-
-
+#define HEADER_LEN 44 // Octet
+#define SNAME_LEN 64  // Octet
+#define FILE_LEN 128  // Octet
+// vend has no size beaucause it can be extended
 
 struct bootp
 {
-    unsigned char op:8;
-    unsigned char htype:8;
-    unsigned char hlen:8;
-    unsigned char hops:8;
+    unsigned char op : 8;
+    unsigned char htype : 8;
+    unsigned char hlen : 8;
+    unsigned char hops : 8;
 
-    unsigned int xid:32;
+    unsigned int xid : 32;
 
-    unsigned int secs:16;
-    unsigned int flags:16;
+    unsigned int secs : 16;
+    unsigned int flags : 16;
 
     struct in_addr ciaddr;
     struct in_addr yiaddr;
@@ -61,37 +69,36 @@ struct bootp
     const u_char *sname;
     const u_char *file;
     const uint16_t *vend;
-
 };
 
 /**
- * @brief Print the Bootp info depence of verbose level 
+ * @brief Print the Bootp info depence of verbose level
  */
 void PrintBootp(struct bootp *bootp, int verbose);
 
 /**
- * @brief Decode Bootp trame since packet 
+ * @brief Decode Bootp trame since packet
  */
 int DecodeBootp(const u_char *packet, struct trameinfo *trameinfo);
 
 /* ---------------------------------------------------------dhcp--------------------------------------------------------------------------------------
-*/
+ */
 
 #define SUBMASK 1
 #define TIMEOFF 2
 #define ROUTER 3
-#define DNS    6
+#define DNS 6
 #define HOST 12
 #define DOMAIN 15
 #define BROCAST 28
 #define NETSERV 44
 #define NETSCOP 47
-#define REQIP   50
-#define LEASE   51
-#define TYPE    53
-#define SERVID  54
+#define REQIP 50
+#define LEASE 51
+#define TYPE 53
+#define SERVID 54
 #define REQLIST 55
-#define CID     61
+#define CID 61
 
 // struct dhcp
 // {
@@ -117,7 +124,7 @@ struct dhcps
 {
     char present;
     char size;
-  const u_char *str;
+    const u_char *str;
 };
 
 /**
@@ -125,21 +132,18 @@ struct dhcps
  */
 void DHCPnames_reso(int code, char *buf);
 
-
 /**
- * @brief Print the DHCP trame's info depance on verbose level 
+ * @brief Print the DHCP trame's info depance on verbose level
  */
-void PrintDHCP(struct dhcps dhcps[64],int verbose);
+void PrintDHCP(struct dhcps dhcps[64], int verbose);
 
 /**
  * @brief Decode the DCHP info after the magic cookie (pointed by vend)
  */
 void DecodeDHCP(const u_char *vend, struct trameinfo *trameinfo); // a reprendre car vend[i] = en faite sais pas.
 
-
-
 /* ---------------------------------------------------------ethernet--------------------------------------------------------------------------------------
-*/
+ */
 
 /**
  * @brief Convert a int into an physical addresse (char *). buf size must >17
@@ -147,7 +151,7 @@ void DecodeDHCP(const u_char *vend, struct trameinfo *trameinfo); // a reprendre
 void INT2MAC(uint8_t *val, char *buf);
 
 /**
- * @brief Print the Ethernet trame's info depance on verbose level  
+ * @brief Print the Ethernet trame's info depance on verbose level
  */
 void PrintEth(struct ether_header *ether_header, int verbose);
 
@@ -156,19 +160,17 @@ void PrintEth(struct ether_header *ether_header, int verbose);
  */
 int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo);
 
-
-
 /* ---------------------------------------------------------ip--------------------------------------------------------------------------------------
-*/
+ */
 
 /**
  * @brief manage the IP's option
- * 
+ *
  */
 void IPOption(void);
 
 /**
- * @brief Print the IP's info depence of verbose level 
+ * @brief Print the IP's info depence of verbose level
  */
 void PrintIP(struct ip *ip, int verbose);
 
@@ -177,13 +179,11 @@ void PrintIP(struct ip *ip, int verbose);
  */
 int DecodeIP(const u_char *packet, struct trameinfo *trameinfo);
 
-
 /* ---------------------------------------------------------tcp--------------------------------------------------------------------------------------
-*/
-
+ */
 
 /**
- * @brief Print the TCP info depence of verbose level 
+ * @brief Print the TCP info depence of verbose level
  */
 void PrintTCP(struct tcphdr *tcphdr, int verbose);
 
@@ -192,10 +192,8 @@ void PrintTCP(struct tcphdr *tcphdr, int verbose);
  */
 int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo);
 
-
 /* ---------------------------------------------------------udp--------------------------------------------------------------------------------------
-*/
-
+ */
 
 #define L_SRCPORT 16
 #define L_DSTPORT 16
@@ -215,12 +213,12 @@ struct udp
 void beSUDPtoh(struct udp *udp);
 
 /**
- * @brief Print the UDP trame's info depance on verbose level  
+ * @brief Print the UDP trame's info depance on verbose level
  */
 void PrintUDP(struct udp *udp, int verbose);
 
 /**
- * @brief Decode the UDP's info since packet 
+ * @brief Decode the UDP's info since packet
  */
 int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo);
 

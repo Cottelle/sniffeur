@@ -1,11 +1,11 @@
 #include "protocol.h"
 
-void Synthese(struct ip *ip, int SP, int DP)
+void Synthese(struct ip *ip, int SP, int DP,char color)
 {
     // if (color)
     //     printf("\033[34;01m");
-    printf("%s:%i", inet_ntoa(ip->ip_src), SP);
-    printf("-->%s:%i %s", inet_ntoa(ip->ip_dst), DP, (ip->ip_p == 0x11) ? "UDP " : ((ip->ip_p == 0x06) ? "TCP" : "??"));
+    printf("\33[%im%s\33[00m:\33[%im%i\33[00m",BLUE(color), inet_ntoa(ip->ip_src),YELLOW(color), SP);
+    printf(" --> \33[%im%s\33[00m:\33[%im%i\33[00m \33[%im%s\33[00m",BLUE(color), inet_ntoa(ip->ip_dst),YELLOW(color), DP,RED(color), (ip->ip_p == 0x11) ? "UDP " : ((ip->ip_p == 0x06) ? "TCP" : "??"));
     // if (color)
     //     printf("\033[00m");
 }
@@ -118,14 +118,14 @@ void PrintDHCP(struct dhcps dhcps[64], int verbose)
                 }
                 else if (i == 6) // DNS
                 {
-                    if (dhcps[i].size % 4 == 0)
+                    if (dhcps[i].size % 4 != 0)
                     {
-                        printf("IP no 4");
+                        printf("IP no 4(%i)",dhcps[i].size);
                         continue;
                     }
                     int nub = dhcps[i].size / 4;
                     for (int j = 0; j < nub; j++)
-                        printf("%s", inet_ntoa(*(struct in_addr *)(dhcps[i].str + j * 4)));
+                        printf("%s ", inet_ntoa(*(struct in_addr *)(dhcps[i].str + j * 4)));
                 }
             }
     }
@@ -360,7 +360,7 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
     struct tcphdr *tcphdr = (struct tcphdr *)packet;
     trameinfo->header_lv3 = (void *)packet;
 
-    Synthese((struct ip *)trameinfo->header_lv2, tcphdr->th_sport, tcphdr->th_dport);
+    Synthese((struct ip *)trameinfo->header_lv2, tcphdr->th_sport, tcphdr->th_dport,trameinfo->color);
 
     printf(" seq= %u ack= %u win= %u ", be16toh(tcphdr->th_seq), be16toh(tcphdr->th_ack), tcphdr->th_win);
 
@@ -409,7 +409,7 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
     struct udp *udp = (struct udp *)packet;
     trameinfo->header_lv3 = (void *)packet;
 
-    Synthese((struct ip *)trameinfo->header_lv2, be16toh(udp->S_Port), be16toh(udp->D_Port));
+    Synthese((struct ip *)trameinfo->header_lv2, be16toh(udp->S_Port), be16toh(udp->D_Port),trameinfo->color);
 
     switch (be16toh(udp->D_Port))
     {
