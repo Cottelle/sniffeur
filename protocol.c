@@ -20,7 +20,6 @@ void PrintBootp(struct bootp *bootp, int verbose)
     printf("GetwayIP= %s, ", inet_ntoa(bootp->giaddr));
 }
 
-
 int DecodeBootp(const u_char *packet, struct trameinfo *trameinfo)
 {
     (void)trameinfo;
@@ -46,7 +45,6 @@ int DecodeBootp(const u_char *packet, struct trameinfo *trameinfo)
     }
     return 0;
 }
-
 
 void DHCPnames_reso(int code, char *buf)
 {
@@ -118,7 +116,7 @@ void PrintDHCP(struct dhcps dhcps[64], int verbose)
                         sum += dhcps[i].str[j] << (dhcps[i].size - j - 1) * 8;
                     printf("%lli ", sum);
                 }
-                else if(i==6) // DNS
+                else if (i == 6) // DNS
                 {
                     if (dhcps[i].size % 4 == 0)
                     {
@@ -133,15 +131,23 @@ void PrintDHCP(struct dhcps dhcps[64], int verbose)
     }
     else // verbose ==2
     {
+        printf("|Decode DHCP: ");
         for (int i = 0; i < 64; i++)
             if (dhcps[i].present)
             {
-                DHCPnames_reso(i, name);
-                printf("%s= ", name);
+
                 if (i == 1 || i == 54 || i == 61)
+                {
+                    DHCPnames_reso(i, name);
+                    printf("%s= ", name);
                     printf(" %s ", inet_ntoa(*(struct in_addr *)(dhcps[i].str)));
+                }
                 else if (i == 15)
+                {
+                    DHCPnames_reso(i, name);
+                    printf("%s= ", name);
                     printf(" %s ", dhcps[i].str);
+                }
             }
     }
 }
@@ -208,7 +214,6 @@ void DecodeDHCP(const u_char *vend, struct trameinfo *trameinfo)
     }
 }
 
-
 void INT2MAC(uint8_t *val, char *buf)
 {
     snprintf(buf, 1024, "%x:%x:%x:%x:%x:%x", val[0], val[1], val[2], val[3], val[4], val[5]);
@@ -245,8 +250,6 @@ void PrintEth(struct ether_header *ether_header, int verbose)
     printf(" ");
 }
 
-
-
 int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
 {
     struct ether_header *ethheader = (struct ether_header *)packet;
@@ -279,12 +282,10 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
     return 0;
 }
 
-
 void IPOption(void)
 {
     printf("There is option ??\n*");
 }
-
 
 void PrintIP(struct ip *ip, int verbose)
 {
@@ -317,7 +318,6 @@ void PrintIP(struct ip *ip, int verbose)
     printf(" ");
 }
 
-
 int DecodeIP(const u_char *packet, struct trameinfo *trameinfo)
 {
     struct ip *ip = (struct ip *)packet;
@@ -346,7 +346,6 @@ int DecodeIP(const u_char *packet, struct trameinfo *trameinfo)
     return 0;
 }
 
-
 void PrintTCP(struct tcphdr *tcphdr, int verbose)
 {
     if (verbose > 2)
@@ -355,9 +354,6 @@ void PrintTCP(struct tcphdr *tcphdr, int verbose)
     if (verbose > 2)
         printf("Checksum= %u, Urgent Pointeur= %u ", tcphdr->check, tcphdr->urg_ptr);
 }
-
-
-
 
 int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
 {
@@ -378,7 +374,6 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
     return 0;
 }
 
-
 void beSUDPtoh(struct udp *udp)
 {
     udp->D_Port = be16toh(udp->D_Port);
@@ -386,7 +381,6 @@ void beSUDPtoh(struct udp *udp)
     udp->Length = be16toh(udp->Length);
     udp->Sum = be16toh(udp->Sum);
 }
-
 
 void PrintUDP(struct udp *udp, int verbose)
 {
@@ -409,7 +403,6 @@ void PrintUDP(struct udp *udp, int verbose)
         break;
     }
 }
-
 
 int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
 {
@@ -438,4 +431,3 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
 
     return 0;
 }
-

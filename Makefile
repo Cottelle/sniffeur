@@ -4,7 +4,7 @@ LIB ?=-lpcap
 
 TARGET = analyseur
 
-SRC = protocol.c analyseur.c
+SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o) 
 
 analyseur: $(OBJ)
@@ -12,14 +12,6 @@ analyseur: $(OBJ)
 
 %.o: %.c
 	gcc -o $@ -c $^ $(CFLAGS) $(LIB)
-
-
-
-# analyseur.o: analyseur.c
-# 	gcc -o analyseur.o -c analyseur.c $(CFLAGS)
-
-# dhcp.o: dhcp.c
-# 	gcc -o dhcp.o -c dhcp.c $(CFLAGS)
 
 clean:
 	rm -f *.o
