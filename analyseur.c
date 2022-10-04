@@ -9,35 +9,11 @@
 #include <bits/endian.h>
 #include <string.h>
 
-#include "udp.h"
-#include "bootp.h"
 #include "analyseur.h"
-#include "dhcp.h"
+#include "protocol.h"
+
 
 // idée algo au fur et a mesure des decapsulations on met les header dans trameinfo puis a la fin d'un ecaplulation (aka il n'y a plus rien aprés bootp ou si pb) on affiche les infos accumulée ainsi on afficher la version verbose 0 IP S_ip:Port --> D_ip:Port Proto et petite exeplication.
-
-struct arg
-{
-    int verbose;
-    int Protocol;
-    char **ip_src;
-    char **ip_dest;
-
-    char Other_message[2048];
-};
-
-void Synthese(struct ip *ip, int SP, int DP)
-{
-    // if (color)
-    //     printf("\033[34;01m");
-    printf("%s:%i", inet_ntoa(ip->ip_src), SP);
-    printf("-->%s:%i %s", inet_ntoa(ip->ip_dst), DP, (ip->ip_p == 0x11) ? "UDP " : ((ip->ip_p == 0x06) ? "TCP" : "??"));
-    // if (color)
-    //     printf("\033[00m");
-}
-
-
-
 
 
 

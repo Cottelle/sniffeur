@@ -4,7 +4,7 @@ LIB ?=-lpcap
 
 TARGET = analyseur
 
-SRC = $(wildcard *.c)
+SRC = protocol.c analyseur.c
 OBJ = $(SRC:.c=.o) 
 
 analyseur: $(OBJ)

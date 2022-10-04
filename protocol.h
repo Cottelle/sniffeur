@@ -1,8 +1,33 @@
-/* On aurait préferer faire un .h pour chaque Protocol mais 
+/* On aurait préferer faire un .h pour chaque Protocol mais cela fait des include croisé (cf git Proto_dif_files)*/
+#ifndef PROTOCOL
+#define PROTOCOL
+
+#include <pcap/pcap.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <net/ethernet.h>
+#include <netinet/ip.h>
+#include <netinet/tcp.h>
+#include <arpa/inet.h>
+#include <bits/endian.h>
+#include <string.h>
 
 
-#include "analyseur.h"
+struct trameinfo
+{
+    int verbose;
 
+    struct ether_header *eth_header;
+    void * header_lv2;
+    void * header_lv3;    //void * because we don't kwon the type of the header (IP ADR TCP UDP...)
+    void * header_lv4; 
+
+};
+
+/**
+ * @brief Print major info of the current trame with the ip and port
+ */
+void Synthese(struct ip *ip, int SP, int DP);
 
 /* ---------------------------------------------------------bootp--------------------------------------------------------------------------------------
 */
@@ -11,6 +36,8 @@
 #define SNAME_LEN 64   //Octet
 #define FILE_LEN 128     //Octet
 //vend has no size beaucause it can be extended
+
+
 
 
 struct bootp
@@ -197,3 +224,4 @@ void PrintUDP(struct udp *udp, int verbose);
  */
 int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo);
 
+#endif
