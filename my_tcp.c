@@ -1,4 +1,5 @@
 #include "my_tcp.h"
+#include "analyseur.h"
 
 void PrintTCP(struct tcphdr *tcphdr, int verbose)
 {

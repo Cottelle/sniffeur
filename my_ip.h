@@ -1,6 +1,8 @@
 #ifndef MYIP
 #define MYIP
 
+#include "trameinfo.h"
+
 #include "analyseur.h"
 
 /**

@@ -1,5 +1,6 @@
 
 #include "my_ip.h"
+#include "trameinfo.h"
 
 void IPOption(void)
 {

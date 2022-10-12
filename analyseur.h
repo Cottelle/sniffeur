@@ -17,16 +17,8 @@
 #include "bootp.h"
 #include "dhcp.h"
 
-struct trameinfo
-{
-    int verbose;
+void Synthese(struct ip *ip, int SP, int DP);
 
-    struct ether_header *eth_header;
-    void * header_lv2;
-    void * header_lv3;    //void * because we don't kwon the type of the header (IP ADR TCP UDP...)
-    void * header_lv4; 
-
-};
 
 
 #endif

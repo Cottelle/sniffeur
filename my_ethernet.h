@@ -3,6 +3,7 @@
 #define MYETHERNET
 
 #include "analyseur.h"
+#include "trameinfo.h"
 // #include "trameinfo.h"
 
 /**
