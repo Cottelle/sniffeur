@@ -126,6 +126,18 @@ struct dhcps
     char size;
     const u_char *str;
 };
+struct arp {                //struct find on internet https://gist.github.com/ardikars/bfcbdef7e37deda0e797
+    unsigned short int hw_type;
+    unsigned short int pro_type;
+    unsigned char hw_len;
+    unsigned char pro_len;
+    unsigned short int op;
+    unsigned char sha[6];
+    unsigned char spa[4];
+    unsigned char tha[5];
+    unsigned char tpa[4];
+};
+
 
 /**
  * @brief Resolve DHCP's names code

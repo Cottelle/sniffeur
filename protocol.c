@@ -262,17 +262,17 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
         DecodeIP(packet + sizeof(struct ether_header), trameinfo);
         break;
     case (0x0806):
-        printf("ARP\n");
+        printf("ARP");
         if (trameinfo->verbose > 1)
             PrintEth(ethheader, trameinfo->verbose);
         break;
     case (0x0835):
-        printf("RARP\n");
+        printf("RARP");
         if (trameinfo->verbose > 1)
             PrintEth(ethheader, trameinfo->verbose);
         break;
     case (0x86DD):
-        printf("IPV6\n");
+        printf("IPV6");
         if (trameinfo->verbose > 1)
             PrintEth(ethheader, trameinfo->verbose);
         break;
