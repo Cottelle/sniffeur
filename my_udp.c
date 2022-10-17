@@ -1,4 +1,4 @@
-#include "udp.h"
+#include "my_udp.h"
 
 void beSUDPtoh(struct udp *udp)
 {
@@ -8,36 +8,39 @@ void beSUDPtoh(struct udp *udp)
     udp->Sum = be16toh(udp->Sum);
 }
 
-
-void PrintUDP(struct udp *udp, int verbose)
+void PrintUDP(struct trameinfo *t)
 {
-    if (verbose > 2)
-        printf("\n");
-    printf("|Decode UDP: ");
+    if (t->verbose > 2)
+        WriteInBuf(t, "\n");
+
+    struct udp *udp = (struct udp *)t->header_lv3;
+    WriteInBuf(t, "|Decode UDP: ");
     beSUDPtoh(udp); // Modif packet (ireversible ?)
-    if (verbose > 2)
-        printf("Length = %u, Checksum = %u, ", udp->Length, udp->Sum);
-    printf("Protocol = ");
+    if (t->verbose > 2)
+        WriteInBuf(t, "Length = %u, Checksum = %u, ", udp->Length, udp->Sum);
+    WriteInBuf(t, "Protocol = ");
     switch (be16toh(udp->D_Port))
     {
     case 67:
     case 68:
-        printf("Bootp\n\n");
+        WriteInBuf(t, "Bootp\n\n");
         break;
 
     default:
-        printf("Unreconized Protocol (%u)", udp->D_Port); //?
+        WriteInBuf(t, "Unreconized Protocol (%u)", udp->D_Port); //?
         break;
     }
 }
-
 
 int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
 {
     struct udp *udp = (struct udp *)packet;
     trameinfo->header_lv3 = (void *)packet;
 
-    Synthese((struct ip *)trameinfo->header_lv2, be16toh(udp->S_Port), be16toh(udp->D_Port));
+    if (trameinfo->verbose > 1)
+            PrintUDP(trameinfo);
+
+    Synthese((struct ip *)trameinfo->header_lv2, be16toh(udp->S_Port), be16toh(udp->D_Port), trameinfo->color);
 
     switch (be16toh(udp->D_Port))
     {
@@ -48,15 +51,9 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
 
     default:
         printf("Unreconized Protocol (%u)", udp->S_Port);
-        if (trameinfo->verbose > 1)
-        {
-            PrintEth(trameinfo->eth_header, trameinfo->verbose);
-            PrintIP((struct ip *)trameinfo->header_lv2, trameinfo->verbose);
-            PrintUDP(udp, trameinfo->verbose);
-        }
+        
         break;
     }
 
     return 0;
 }
-

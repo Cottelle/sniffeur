@@ -1,10 +1,12 @@
+#ifndef MY_ETH
+#define MY_ETH
 
-#ifndef MYETHERNET
-#define MYETHERNET
+#include <stdio.h>
+#include <net/ethernet.h>
 
-#include "analyseur.h"
 #include "trameinfo.h"
-// #include "trameinfo.h"
+
+#include "my_ip.h"
 
 /**
  * @brief Convert a int into an physical addresse (char *). buf size must >17
@@ -12,9 +14,9 @@
 void INT2MAC(uint8_t *val, char *buf);
 
 /**
- * @brief Print the Ethernet trame's info depance on verbose level  
+ * @brief Print the Ethernet trame's info depance on verbose level into the verbose buffer
  */
-void PrintEth(struct ether_header *ether_header, int verbose);
+void VerboseEth(struct trameinfo* t);
 
 /**
  * @brief Decode the Ethernet's info since packet

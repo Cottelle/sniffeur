@@ -1,4 +1,5 @@
-#include "dhcp.h"
+#include "my_dhcp.h"
+
 
 void DHCPnames_reso(int code, char *buf)
 {
@@ -48,10 +49,10 @@ void DHCPnames_reso(int code, char *buf)
     return;
 }
 
-void PrintDHCP(struct dhcps dhcps[64], int verbose)
+void PrintDHCP(struct dhcp dhcps[64], struct trameinfo *t)
 {
     char name[16];
-    if (verbose > 2)
+    if (t->verbose > 2)
     {
         printf("\n|Decode DHCP: ");
         for (int i = 0; i < 64; i++)
@@ -60,9 +61,9 @@ void PrintDHCP(struct dhcps dhcps[64], int verbose)
                 DHCPnames_reso(i, name);
                 printf("%s= ", name);
                 if (i == 1 || i == 3 || i == 28 || i == 54 || i == 61)
-                    printf(" %s ", inet_ntoa(*(struct in_addr *)(dhcps[i].str)));
+                    printf("%s ", inet_ntoa(*(struct in_addr *)(dhcps[i].str)));
                 else if (i == 12 || i == 15)
-                    printf(" %s ", dhcps[i].str);
+                    printf("%s ", dhcps[i].str);
                 else if (i == 2 || i == 44 || i == 47 || i == 51) // a peut être verifier
                 {
                     unsigned long long sum = 0;
@@ -70,30 +71,38 @@ void PrintDHCP(struct dhcps dhcps[64], int verbose)
                         sum += dhcps[i].str[j] << (dhcps[i].size - j - 1) * 8;
                     printf("%lli ", sum);
                 }
-                else // DNS
+                else if (i == 6) // DNS
                 {
-                    if (dhcps[i].size % 4 == 0)
+                    if (dhcps[i].size % 4 != 0)
                     {
-                        printf("IP no 4");
+                        printf("IP no 4(%i)", dhcps[i].size);
                         continue;
                     }
                     int nub = dhcps[i].size / 4;
                     for (int j = 0; j < nub; j++)
-                        printf("%s", inet_ntoa(*(struct in_addr *)(dhcps[i].str + j * 4)));
+                        printf("%s ", inet_ntoa(*(struct in_addr *)(dhcps[i].str + j * 4)));
                 }
             }
     }
     else // verbose ==2
     {
+        printf("|Decode DHCP: ");
         for (int i = 0; i < 64; i++)
             if (dhcps[i].present)
             {
-                DHCPnames_reso(i, name);
-                printf("%s= ", name);
+
                 if (i == 1 || i == 54 || i == 61)
+                {
+                    DHCPnames_reso(i, name);
+                    printf("%s= ", name);
                     printf(" %s ", inet_ntoa(*(struct in_addr *)(dhcps[i].str)));
+                }
                 else if (i == 15)
+                {
+                    DHCPnames_reso(i, name);
+                    printf("%s= ", name);
                     printf(" %s ", dhcps[i].str);
+                }
             }
     }
 }
@@ -102,8 +111,8 @@ void DecodeDHCP(const u_char *vend, struct trameinfo *trameinfo)
 {
     printf("DHCP ");
     int i = 0;
-    struct dhcps dhcps[64];
-    memset(dhcps, 0, 64 * sizeof(struct dhcps));
+    struct dhcp dhcps[64];
+    memset(dhcps, 0, 64 * sizeof(struct dhcp));
     while (vend[i] != 0xff)
     {
         dhcps[vend[i]].str = vend + i + 2; // evite de faire une structure, alege le code au detriment de la mémoire.
@@ -151,11 +160,5 @@ void DecodeDHCP(const u_char *vend, struct trameinfo *trameinfo)
         printf("]");
     }
     if (trameinfo->verbose > 1)
-    {
-        PrintEth(trameinfo->eth_header, trameinfo->verbose);
-        PrintIP((struct ip *)trameinfo->header_lv2, trameinfo->verbose);
-        PrintUDP((struct udp *)trameinfo->header_lv3, trameinfo->verbose);
-        PrintBootp((struct bootp *)trameinfo->header_lv4, trameinfo->verbose);
-        PrintDHCP(dhcps, trameinfo->verbose);
-    }
+        PrintDHCP(dhcps, trameinfo);
 }

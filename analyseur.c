@@ -1,52 +1,28 @@
-#include <pcap/pcap.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
-#include <net/ethernet.h>
-#include <netinet/ip.h>
-#include <netinet/tcp.h>
-#include <arpa/inet.h>
-#include <bits/endian.h>
-#include <string.h>
 
-#include "udp.h"
-#include "bootp.h"
 #include "analyseur.h"
-#include "dhcp.h"
 
 // idée algo au fur et a mesure des decapsulations on met les header dans trameinfo puis a la fin d'un ecaplulation (aka il n'y a plus rien aprés bootp ou si pb) on affiche les infos accumulée ainsi on afficher la version verbose 0 IP S_ip:Port --> D_ip:Port Proto et petite exeplication.
 
-struct arg
-{
-    int verbose;
-    int Protocol;
-    char **ip_src;
-    char **ip_dest;
-
-    char Other_message[2048];
-};
-
-void Synthese(struct ip *ip, int SP, int DP)
-{
-    // if (color)
-    //     printf("\033[34;01m");
-    printf("%s:%i", inet_ntoa(ip->ip_src), SP);
-    printf("-->%s:%i %s", inet_ntoa(ip->ip_dst), DP, (ip->ip_p == 0x11) ? "UDP " : ((ip->ip_p == 0x06) ? "TCP" : "??"));
-    // if (color)
-    //     printf("\033[00m");
-}
-
-
-
-
-
-
 void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *packet)
 {
-    printf("%li ", header->ts.tv_sec);
     struct arg *arg = (struct arg *)args;
+
+    printf("\33[%im-%li-\33[00m ", GREEN(arg->color), header->ts.tv_sec - arg->starttime);
+
     struct trameinfo trameinfo;
     trameinfo.verbose = arg->verbose;
+    trameinfo.color = arg->color;
+
+    trameinfo.size_buf = BUFVERBOSE_INITSIZE;
+    trameinfo.write_buf=0;
+    trameinfo.bufverbose = malloc(BUFVERBOSE_INITSIZE);
+    if (!trameinfo.bufverbose)
+        {
+            printf("malloc error");
+            exit(1);
+        }
+
+
     if (arg->verbose > 3)
     {
         for (int i = 1; i - 1 < (int)header->len; i++)
@@ -59,7 +35,7 @@ void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *pack
         }
     }
     DecodeEthernet(packet, &trameinfo);
-    printf("\n");
+    printf("%s\n",trameinfo.bufverbose);
     if (arg->verbose > 1)
         printf("\n");
     if (arg->verbose > 2)
@@ -72,17 +48,31 @@ int main(int argc, char **argv)
     bpf_u_int32 netaddr;
     bpf_u_int32 netmask;
     char errbuf[1024];
+    struct timeval starttime;
     struct arg arg;
+    struct options_t options;
 
-    arg.verbose = atoi(argv[2]);
+    parseArgs(argc, argv, &options);
+    
+    arg.verbose = options.verbose;
+    arg.color = options.colors;
 
-    if (pcap_lookupnet(argv[1], &netaddr, &netmask, errbuf) == -1)
+    if (!options.interface)
+    {
+        fprintf(stderr, "Not interface chossen please chose with -i <interface> option\n");
+        exit(2);
+    }
+    if (pcap_lookupnet(options.interface, &netaddr, &netmask, errbuf) == -1)
         fprintf(stderr, "Erre pcap_looupnet: %s\n", errbuf);
 
-    pcap_t *p = pcap_open_live(argv[1], 1024, 1, 1000, errbuf);
+    pcap_t *p = pcap_open_live(options.interface, 1024, 1, 1000, errbuf);
     if (p == NULL)
         fprintf(stderr, "Erre pcap_open_live: %s\n", errbuf);
-    if (pcap_loop(p, -1, callback, (u_char *)&arg) == PCAP_ERROR)
+
+    if (gettimeofday(&starttime, NULL) == -1)
+        perror("gettimeofday");
+    arg.starttime = starttime.tv_sec;
+    if (pcap_loop(p, options.count, callback, (u_char *)&arg) == PCAP_ERROR)
         fprintf(stderr, "Erreur pcap_loop \n"); // perror a set.qma
 
     pcap_close(p);

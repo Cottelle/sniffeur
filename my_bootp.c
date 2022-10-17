@@ -1,22 +1,26 @@
+#include "my_bootp.h"
 
-
-#include "bootp.h"
-
-void PrintBootp(struct bootp *bootp, int verbose)
+void PrintBootp(struct trameinfo *t)
 {
-    if (verbose > 2)
-        printf("\n");
-    printf("|Decode Bootp: MyIP= %s, ", inet_ntoa(bootp->ciaddr));
-    printf("YourIP= %s, ", inet_ntoa(bootp->yiaddr));
-    printf("ServIP= %s, ", inet_ntoa(bootp->siaddr));
-    printf("GetwayIP= %s, ", inet_ntoa(bootp->giaddr));
-}
+    struct bootp *bootp = (struct bootp *)t->header_lv4;
 
+    if (t->verbose > 2)
+        WriteInBuf(t, "\n");
+    WriteInBuf(t, "|Decode Bootp: MyIP= %s, ", inet_ntoa(bootp->ciaddr));
+    WriteInBuf(t, "YourIP= %s, ", inet_ntoa(bootp->yiaddr));
+    WriteInBuf(t, "ServIP= %s, ", inet_ntoa(bootp->siaddr));
+    WriteInBuf(t, "GetwayIP= %s, ", inet_ntoa(bootp->giaddr));
+}
 
 int DecodeBootp(const u_char *packet, struct trameinfo *trameinfo)
 {
     (void)trameinfo;
     struct bootp *bootp = (struct bootp *)packet;
+
+    if (trameinfo->verbose > 1)
+        PrintBootp(trameinfo);
+
+
     bootp->vend = (const uint16_t *)(packet + HEADER_LEN + SNAME_LEN + FILE_LEN);
     trameinfo->header_lv4 = (void *)bootp;
 
@@ -33,8 +37,6 @@ int DecodeBootp(const u_char *packet, struct trameinfo *trameinfo)
             printf("Response");
         else
             printf("Unknow operation (%u)\n*", bootp->op);
-        if (trameinfo->verbose > 1)
-            PrintBootp(bootp, trameinfo->verbose);
     }
     return 0;
 }

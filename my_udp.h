@@ -1,13 +1,8 @@
-#ifndef UDP
-#define UDP
+#ifndef MYUDP
+#define MYUDP
 
-#include <arpa/inet.h>
-#include <stdio.h>
-#include <string.h>
-
-#include "analyseur.h"
-// #include "trameinfo.h"
-
+#include "trameinfo.h"
+#include "my_bootp.h"
 
 #define L_SRCPORT 16
 #define L_DSTPORT 16
@@ -27,12 +22,12 @@ struct udp
 void beSUDPtoh(struct udp *udp);
 
 /**
- * @brief Print the UDP trame's info depance on verbose level  
+ * @brief Print the UDP trame's info depance on verbose level into verbose buffer
  */
-void PrintUDP(struct udp *udp, int verbose);
+void PrintUDP(struct trameinfo *t);
 
 /**
- * @brief Decode the UDP's info since packet 
+ * @brief Decode the UDP's info since packet
  */
 int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo);
 

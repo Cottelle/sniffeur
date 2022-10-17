@@ -11,13 +11,23 @@
 #include <bits/endian.h>
 
 #include "my_ethernet.h"
-#include "my_ip.h"
-#include "my_tcp.h"
-#include "udp.h"
-#include "bootp.h"
-#include "dhcp.h"
+#include "args-parser.h"
 
-void Synthese(struct ip *ip, int SP, int DP);
+#define BUFVERBOSE_INITSIZE 256
+
+
+struct arg
+{
+    time_t starttime;
+    int verbose;
+    int Protocol;
+    char **ip_src;
+    char **ip_dest;
+    char color;
+
+    char Other_message[2048];
+};
+
 
 
 
