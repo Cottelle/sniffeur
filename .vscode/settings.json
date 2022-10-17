@@ -6,6 +6,8 @@
         "tcp.h": "c",
         "endian.h": "c",
         "udp.h": "c",
-        "ip6.h": "c"
+        "ip6.h": "c",
+        "analyseur.h": "c",
+        "protocol.h": "c"
     }
 }
