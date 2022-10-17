@@ -22,7 +22,7 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
     if (trameinfo->verbose > 1)
         PrintTCP(trameinfo);
 
-    Synthese((struct ip *)trameinfo->header_lv2, tcphdr->th_sport, tcphdr->th_dport, trameinfo->color);
+    SyntheseIP((struct ip *)trameinfo->header_lv2, tcphdr->th_sport, tcphdr->th_dport, trameinfo->color);
 
     printf(" seq= %u ack= %u win= %u ", be16toh(tcphdr->th_seq), be16toh(tcphdr->th_ack), tcphdr->th_win);
 

@@ -34,9 +34,9 @@ struct trameinfo
 };
 
 /**
- * @brief Convert a int into an physical addresse (char *). buf size must >17
+ * @brief Convert a int into an physical addresse (char *). And return buf for easy print. buf size must >17
  */
-void INT2MAC(uint8_t *val, char *buf);
+char *INT2MAC(uint8_t *val, char *buf);
 
 /**
  * @brief Write a the foramt in the bufverbose
@@ -46,6 +46,6 @@ void WriteInBuf(struct trameinfo *trameinfo, char *format, ...);
 /**
  * @brief Print major info of the current trame with the ip and port. Color is a bool indicate if the text is will colored. Use with IP protocol to show  unsincronized info (IP Port IP Port)
  */
-void Synthese(struct ip *ip, int SP, int DP, char color);
+void SyntheseIP(struct ip *ip, int SP, int DP, char color);
 
 #endif

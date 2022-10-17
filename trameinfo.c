@@ -1,8 +1,9 @@
 #include "trameinfo.h"
 
-void INT2MAC(uint8_t *val, char *buf)
+char *INT2MAC(uint8_t *val, char *buf)
 {
     snprintf(buf, 1024, "%x:%x:%x:%x:%x:%x", val[0], val[1], val[2], val[3], val[4], val[5]);
+    return buf;         //for easy print
 }
 
 
@@ -33,7 +34,7 @@ void WriteInBuf(struct trameinfo *t, char *format, ...)
 }
 
 
-void Synthese(struct ip *ip, int SP, int DP, char color)
+void SyntheseIP(struct ip *ip, int SP, int DP, char color)
 {
 
     printf("\33[%im%s\33[00m:\33[%im%i\33[00m", BLUE(color), inet_ntoa(ip->ip_src), YELLOW(color), SP);

@@ -29,8 +29,12 @@ int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Syn
     arp->sp= (struct in_addr *)&arp->spa;
     arp->tp=(struct in_addr *)&arp->tpa;
 
-    printf("%p %p\n",&arp->sha[5],&arp->spa);
-    
+    char buf[18]={};   
+
+    //Print S-->D ARP like SyntheseIP with great color
+    printf("\n\33[%im%s\33[00m:\33[00m", BLUE(trameinfo->color), INT2MAC(arp->sha,buf));
+    printf(" --> \33[%im%s\33[00m:\33[00m \33[%imARP \33[00m", BLUE(trameinfo->color), INT2MAC(arp->tha,buf), RED(trameinfo->color));
+
 
     if (arp->hw_len != 6)
     {
@@ -42,8 +46,6 @@ int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Syn
         printf("No IPv4 length");
         return -1;
     }
-
-    printf("ARP ");
 
     int op = be16toh(arp->op);
 
