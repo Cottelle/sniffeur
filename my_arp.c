@@ -14,10 +14,8 @@ void PrintARP(struct arp *arp, struct trameinfo *t)
     WriteInBuf(t, "Hardware Address Lenght = %i Protocol Addresse Length  =%i", arp->hw_len, arp->pro_len);
 
     char buf[18];
-    INT2MAC(arp->sha, buf);
-    WriteInBuf(t, "Sender Phy Addr = %s  Sender Protocol Addr = %s ", buf, inet_ntoa(*arp->sp));
-    INT2MAC(arp->tha, buf);
-    WriteInBuf(t, "Reciver Phy Addr = %s  Sender Protocol Addr = %s ", buf, inet_ntoa(*arp->tp));
+    WriteInBuf(t, "Sender Phy Addr = %s  Sender Protocol Addr = %s ", INT2MAC(arp->sha, buf), inet_ntoa(*arp->sp));
+    WriteInBuf(t, "Reciver Phy Addr = %s  Sender Protocol Addr = %s ", INT2MAC(arp->tha, buf), inet_ntoa(*arp->tp));
 }
 
 int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Synthese ?? oui si avec brocast
@@ -26,15 +24,14 @@ int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Syn
     struct arp *arp = (struct arp *)packect;
     trameinfo->header_lv2 = (void *)packect;
 
-    arp->sp= (struct in_addr *)&arp->spa;
-    arp->tp=(struct in_addr *)&arp->tpa;
+    arp->sp = (struct in_addr *)&arp->spa;
+    arp->tp = (struct in_addr *)&arp->tpa;
 
-    char buf[18]={};   
+    char buf[18] = {};
 
-    //Print S-->D ARP like SyntheseIP with great color
-    printf("\n\33[%im%s\33[00m:\33[00m", BLUE(trameinfo->color), INT2MAC(arp->sha,buf));
-    printf(" --> \33[%im%s\33[00m:\33[00m \33[%imARP \33[00m", BLUE(trameinfo->color), INT2MAC(arp->tha,buf), RED(trameinfo->color));
-
+    // Print S-->D ARP like SyntheseIP with great color
+    printf("\n\33[%im%s\33[00m:\33[00m", BLUE(trameinfo->color), INT2MAC(arp->sha, buf));
+    printf(" --> \33[%im%s\33[00m:\33[00m \33[%imARP \33[00m", BLUE(trameinfo->color), INT2MAC(arp->tha, buf), RED(trameinfo->color));
 
     if (arp->hw_len != 6)
     {
@@ -63,6 +60,7 @@ int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Syn
     else
         printf("Unknown %i", arp->op);
 
-    PrintARP(arp,trameinfo);
+    if (trameinfo->verbose > 1)
+        PrintARP(arp, trameinfo);
     return 0;
 }

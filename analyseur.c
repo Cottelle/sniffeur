@@ -15,11 +15,14 @@ void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *pack
 
     trameinfo.size_buf = BUFVERBOSE_INITSIZE;
     trameinfo.write_buf = 0;
-    trameinfo.bufverbose = malloc(BUFVERBOSE_INITSIZE);
-    if (!trameinfo.bufverbose)
+    if (trameinfo.verbose > 1)
     {
-        printf("malloc error");
-        exit(1);
+        trameinfo.bufverbose = malloc(BUFVERBOSE_INITSIZE);
+        if (!trameinfo.bufverbose)
+        {
+            printf("malloc error");
+            exit(1);
+        }
     }
 
     if (arg->verbose > 3)
@@ -34,7 +37,12 @@ void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *pack
         }
     }
     DecodeEthernet(packet, &trameinfo);
-    printf("%s\n", trameinfo.bufverbose);
+    if (trameinfo.verbose > 1)
+    {
+        printf("%s", trameinfo.bufverbose);
+        free(trameinfo.bufverbose);
+    }
+    printf("\n");
     if (arg->verbose > 1)
         printf("\n");
     if (arg->verbose > 2)
