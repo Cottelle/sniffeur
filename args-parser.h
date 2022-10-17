@@ -19,7 +19,7 @@ typedef enum action_t {
 struct options_t {
     action_t action;
     char *interface;
-    char *output_file;
+    char *off_file;
     char *filter;
     char colors;
     char verbose;

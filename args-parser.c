@@ -31,7 +31,7 @@ void initOptions(struct options_t *options)
 {
     options->action = ACTION_UNKNOWN;
     options->interface = NULL;
-    options->output_file = NULL;
+    options->off_file = NULL;
     options->filter = NULL;
     options->colors = 1;
     options->verbose = 1;
@@ -107,7 +107,7 @@ void parseArgs(int argc, char **argv, struct options_t *options)
             options->interface = optarg;
             break;
         case 'o':
-            options->output_file = optarg;
+            options->off_file = optarg;
             break;
         case 'f':
             options->filter = optarg;
