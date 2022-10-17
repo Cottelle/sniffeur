@@ -1,13 +1,48 @@
 #include "protocol.h"
 
-void Synthese(struct ip *ip, int SP, int DP,char color)
+void Synthese(struct ip *ip, int SP, int DP, char color)
 {
     // if (color)
     //     printf("\033[34;01m");
-    printf("\33[%im%s\33[00m:\33[%im%i\33[00m",BLUE(color), inet_ntoa(ip->ip_src),YELLOW(color), SP);
-    printf(" --> \33[%im%s\33[00m:\33[%im%i\33[00m \33[%im%s\33[00m",BLUE(color), inet_ntoa(ip->ip_dst),YELLOW(color), DP,RED(color), (ip->ip_p == 0x11) ? "UDP " : ((ip->ip_p == 0x06) ? "TCP" : "??"));
+    printf("\33[%im%s\33[00m:\33[%im%i\33[00m", BLUE(color), inet_ntoa(ip->ip_src), YELLOW(color), SP);
+    printf(" --> \33[%im%s\33[00m:\33[%im%i\33[00m \33[%im%s\33[00m", BLUE(color), inet_ntoa(ip->ip_dst), YELLOW(color), DP, RED(color), (ip->ip_p == 0x11) ? "UDP " : ((ip->ip_p == 0x06) ? "TCP" : "??"));
     // if (color)
     //     printf("\033[00m");
+}
+
+void PrintARP(struct arp *arp, int verbose);
+
+int DecodeARP(const u_char *packect, struct trameinfo *trameinfo)       //ajouter Synthese ?? oui si avec brocast
+{
+    (void)trameinfo;
+    struct arp *arp = (struct arp *)packect;
+    trameinfo->header_lv2 = (void *)packect;
+
+    printf("ARP ");
+    int af;
+    if (arp->pro_len == 4)
+        af = AF_INET;
+    else
+        af = AF_INET6;
+
+    char buf[40];
+    int op = be16toh(arp->op);
+
+    if (op == 0x01)
+    {
+        printf("Request : %s ask who has ", inet_ntop(af, arp->spa, buf, 40));
+        printf("%s", inet_ntop(af, arp->tpa + 1, buf, 40)); //+1??
+    }
+    else if (op == 0x02)
+    {
+        char buf2[18];
+        INT2MAC(arp->sha,buf2);
+        printf("Reply %s is with physic addr %s", inet_ntop(af,arp->spa,buf,40),buf2);
+
+    }
+    else
+        printf("Unknown %i", arp->op);
+    return 0;
 }
 
 void PrintBootp(struct bootp *bootp, int verbose)
@@ -120,7 +155,7 @@ void PrintDHCP(struct dhcps dhcps[64], int verbose)
                 {
                     if (dhcps[i].size % 4 != 0)
                     {
-                        printf("IP no 4(%i)",dhcps[i].size);
+                        printf("IP no 4(%i)", dhcps[i].size);
                         continue;
                     }
                     int nub = dhcps[i].size / 4;
@@ -262,9 +297,7 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
         DecodeIP(packet + sizeof(struct ether_header), trameinfo);
         break;
     case (0x0806):
-        printf("ARP");
-        if (trameinfo->verbose > 1)
-            PrintEth(ethheader, trameinfo->verbose);
+        DecodeARP(packet + sizeof(struct ether_header), trameinfo);
         break;
     case (0x0835):
         printf("RARP");
@@ -360,7 +393,7 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
     struct tcphdr *tcphdr = (struct tcphdr *)packet;
     trameinfo->header_lv3 = (void *)packet;
 
-    Synthese((struct ip *)trameinfo->header_lv2, tcphdr->th_sport, tcphdr->th_dport,trameinfo->color);
+    Synthese((struct ip *)trameinfo->header_lv2, tcphdr->th_sport, tcphdr->th_dport, trameinfo->color);
 
     printf(" seq= %u ack= %u win= %u ", be16toh(tcphdr->th_seq), be16toh(tcphdr->th_ack), tcphdr->th_win);
 
@@ -409,7 +442,7 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
     struct udp *udp = (struct udp *)packet;
     trameinfo->header_lv3 = (void *)packet;
 
-    Synthese((struct ip *)trameinfo->header_lv2, be16toh(udp->S_Port), be16toh(udp->D_Port),trameinfo->color);
+    Synthese((struct ip *)trameinfo->header_lv2, be16toh(udp->S_Port), be16toh(udp->D_Port), trameinfo->color);
 
     switch (be16toh(udp->D_Port))
     {

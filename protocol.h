@@ -126,6 +126,7 @@ struct dhcps
     char size;
     const u_char *str;
 };
+
 struct arp {                //struct find on internet https://gist.github.com/ardikars/bfcbdef7e37deda0e797
     unsigned short int hw_type;
     unsigned short int pro_type;
@@ -137,6 +138,16 @@ struct arp {                //struct find on internet https://gist.github.com/ar
     unsigned char tha[5];
     unsigned char tpa[4];
 };
+
+/**
+ * @brief Print the ARP trame's info depance on verbose level
+ */
+void PrintARP(struct arp *arp,int verbose);
+
+/**
+ * @brief Decode the ARP info since packet
+ *  */
+int DecodeARP(const u_char *packect,struct trameinfo *trameinfo);
 
 
 /**
