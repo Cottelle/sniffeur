@@ -1,5 +1,11 @@
 #include "trameinfo.h"
 
+void INT2MAC(uint8_t *val, char *buf)
+{
+    snprintf(buf, 1024, "%x:%x:%x:%x:%x:%x", val[0], val[1], val[2], val[3], val[4], val[5]);
+}
+
+
 void WriteInBuf(struct trameinfo *t, char *format, ...)
 {
     int i;

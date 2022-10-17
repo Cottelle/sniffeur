@@ -5,6 +5,7 @@
         "inet.h": "c",
         "tcp.h": "c",
         "endian.h": "c",
-        "udp.h": "c"
+        "udp.h": "c",
+        "if_arp.h": "c"
     }
 }

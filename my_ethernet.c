@@ -1,9 +1,5 @@
 #include "my_ethernet.h"
 
-void INT2MAC(uint8_t *val, char *buf)
-{
-    snprintf(buf, 1024, "%x:%x:%x:%x:%x:%x", val[0], val[1], val[2], val[3], val[4], val[5]);
-}
 
 void VerboseEth(struct trameinfo *t)
 {
@@ -52,7 +48,7 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
         DecodeIP(packet + sizeof(struct ether_header), trameinfo);
         break;
     case (0x0806):
-        // DecodeARP(packet + sizeof(struct ether_header), trameinfo);
+        DecodeARP(packet + sizeof(struct ether_header), trameinfo);
         break;
     case (0x0835):
         printf("RARP");

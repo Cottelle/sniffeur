@@ -34,6 +34,11 @@ struct trameinfo
 };
 
 /**
+ * @brief Convert a int into an physical addresse (char *). buf size must >17
+ */
+void INT2MAC(uint8_t *val, char *buf);
+
+/**
  * @brief Write a the foramt in the bufverbose
  */
 void WriteInBuf(struct trameinfo *trameinfo, char *format, ...);

@@ -7,11 +7,9 @@
 #include "trameinfo.h"
 
 #include "my_ip.h"
+#include "my_arp.h"
 
-/**
- * @brief Convert a int into an physical addresse (char *). buf size must >17
- */
-void INT2MAC(uint8_t *val, char *buf);
+
 
 /**
  * @brief Print the Ethernet trame's info depance on verbose level into the verbose buffer
