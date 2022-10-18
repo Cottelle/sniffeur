@@ -7,14 +7,18 @@ void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *pack
 {
     struct arg *arg = (struct arg *)args;
 
+
     printf("\33[%im-%li-\33[00m ", GREEN(arg->color), header->ts.tv_sec - arg->starttime);
 
     struct trameinfo trameinfo;
+    
+    trameinfo.len= header->len;
+    trameinfo.packet = packet;
+    trameinfo.cur = 0;
+
     trameinfo.verbose = arg->verbose;
     trameinfo.color = arg->color;
 
-    trameinfo.size_buf = BUFVERBOSE_INITSIZE;
-    trameinfo.write_buf = 0;
     if (trameinfo.verbose > 1)
     {
         trameinfo.bufverbose = malloc(BUFVERBOSE_INITSIZE);
@@ -24,6 +28,8 @@ void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *pack
             exit(1);
         }
     }
+    trameinfo.size_buf = BUFVERBOSE_INITSIZE;
+    trameinfo.write_buf = 0;
 
     if (arg->verbose > 3)
     {

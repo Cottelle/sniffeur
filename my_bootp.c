@@ -14,8 +14,9 @@ void PrintBootp(struct trameinfo *t)
 
 int DecodeBootp(const u_char *packet, struct trameinfo *trameinfo)
 {
-    (void)trameinfo;
     struct bootp *bootp = (struct bootp *)packet;
+
+    trameinfo->cur+=HEADER_LEN + SNAME_LEN + FILE_LEN;
 
     if (trameinfo->verbose > 1)
         PrintBootp(trameinfo);
@@ -26,6 +27,7 @@ int DecodeBootp(const u_char *packet, struct trameinfo *trameinfo)
 
     if (be16toh(bootp->vend[0]) == 0x6382 && be16toh(bootp->vend[1]) == 0x5363)
     {
+        trameinfo->cur+=2;
         DecodeDHCP((const u_char *)(bootp->vend + 2), trameinfo);
     }
     else

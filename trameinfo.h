@@ -21,6 +21,10 @@
 
 struct trameinfo
 {
+    const u_char* packet;
+    uint len;         //The len of the trame
+    uint cur;         //The current place
+
     int verbose;
     char color;
     struct ether_header *eth_header;
@@ -31,6 +35,8 @@ struct trameinfo
     char *bufverbose; // the buffer where the additional info are put, print a the end of the parsing
     int size_buf;     // the dynamic size of the buf
     int write_buf;    // the start of free place on this buf
+
+
 };
 
 /**

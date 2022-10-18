@@ -4,6 +4,7 @@
 #include <netinet/tcp.h>
 
 #include "trameinfo.h"
+#include "my_smtp.h"
 
 
 /**

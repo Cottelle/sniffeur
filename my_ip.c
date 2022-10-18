@@ -43,6 +43,8 @@ int DecodeIP(const u_char *packet, struct trameinfo *trameinfo)
     struct ip *ip = (struct ip *)packet;
     trameinfo->header_lv2 = (void *)packet;
 
+    trameinfo->cur+=ip->ip_hl*4;
+
     if (trameinfo->verbose > 1)
     {
         PrintIP(trameinfo);

@@ -38,6 +38,8 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
     struct ether_header *ethheader = (struct ether_header *)packet;
     trameinfo->eth_header = (struct ether_header *)packet;
 
+    trameinfo->cur+=sizeof(struct ether_header);
+
     if (trameinfo->verbose>1)
         VerboseEth(trameinfo);
 

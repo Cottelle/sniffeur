@@ -37,6 +37,8 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
     struct udp *udp = (struct udp *)packet;
     trameinfo->header_lv3 = (void *)packet;
 
+    trameinfo->cur+=8;
+
     if (trameinfo->verbose > 1)
             PrintUDP(trameinfo);
 

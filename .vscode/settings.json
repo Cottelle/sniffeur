@@ -8,6 +8,9 @@
         "udp.h": "c",
         "if_arp.h": "c",
         "trameinfo.h": "c",
-        "my_tcp.h": "c"
+        "my_tcp.h": "c",
+        "my_arp.h": "c",
+        "my_smtp.h": "c",
+        "ctype.h": "c"
     }
 }
