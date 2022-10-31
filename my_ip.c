@@ -9,9 +9,7 @@ void PrintIP(struct trameinfo *t)
 {
     struct ip *ip = (struct ip *)t->header_lv2;
 
-    if (t->verbose > 2)
-        printf("\n");
-    WriteInBuf(t, "|IP Decode : ");
+    WriteInBuf(t, "\n\t|IP Decode : ");
     WriteInBuf(t, "Total length = %u, ", ip->ip_len);
     if (t->verbose > 2)
     {

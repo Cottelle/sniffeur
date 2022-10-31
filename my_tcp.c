@@ -24,9 +24,7 @@ void PrintTCP(struct trameinfo *t)
 {
 
     struct tcphdr *tcphdr = (struct tcphdr *)t->header_lv3;
-    if (t->verbose > 2)
-        WriteInBuf(t, "\n");
-    WriteInBuf(t, "|Decode TCP: ");
+    WriteInBuf(t, "\n\t\t|Decode TCP: ");
     if (t->verbose > 2)
         WriteInBuf(t, "Checksum= %u, Urgent Pointeur= %u ", tcphdr->check, tcphdr->urg_ptr);
 }
@@ -36,7 +34,7 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
     struct tcphdr *tcphdr = (struct tcphdr *)packet;
     trameinfo->header_lv3 = (void *)packet;
 
-    trameinfo->cur+=tcphdr->th_off*4;
+    trameinfo->cur += tcphdr->th_off * 4;
 
     if (trameinfo->verbose > 1)
         PrintTCP(trameinfo);

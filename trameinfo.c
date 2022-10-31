@@ -16,7 +16,6 @@ void WriteInBuf(struct trameinfo *t, char *format, ...)
     while ((i = vsnprintf(t->bufverbose, 0, format, ap)) + t->write_buf >= t->size_buf) //test si il y a de la place. Crer de la place sinon
     {
         t->size_buf *= 2;
-        printf("<size=%i>\n",t->size_buf);
         t->bufverbose = realloc(t->bufverbose, t->size_buf);
         if (!t->bufverbose)
         {

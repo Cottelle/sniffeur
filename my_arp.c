@@ -5,13 +5,13 @@ void PrintARP(struct arp *arp, struct trameinfo *t)
 {
     if (t->verbose == 3)
     {
-        WriteInBuf(t, "\n Hardware type = %s Protocol type = ", (arp->hw_type == 1) ? "Ethernet" : "Experimental Ethernet");
+        WriteInBuf(t, "\n\t |ARP Decode : Hardware type = %s Protocol type = ", (arp->hw_type == 1) ? "Ethernet" : "Experimental Ethernet");
         if (arp->pro_type == 0x800)
             WriteInBuf(t, "IP");
         else
             WriteInBuf(t, "Unknown (%i)", arp->pro_type);
     }
-    WriteInBuf(t, "Hardware Address Lenght = %i Protocol Addresse Length  =%i", arp->hw_len, arp->pro_len);
+    WriteInBuf(t, "\n\t |ARP Decode: Hardware Address Lenght = %i Protocol Addresse Length  =%i", arp->hw_len, arp->pro_len);
 
     char buf[18];
     WriteInBuf(t, "Sender Phy Addr = %s  Sender Protocol Addr = %s ", INT2MAC(arp->sha, buf), inet_ntoa(*arp->sp));
@@ -20,7 +20,7 @@ void PrintARP(struct arp *arp, struct trameinfo *t)
 
 int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Synthese ?? oui si avec brocast
 {
-    (void)trameinfo;
+    // (void)trameinfo;
     struct arp *arp = (struct arp *)packect;
     trameinfo->header_lv2 = (void *)packect;
 

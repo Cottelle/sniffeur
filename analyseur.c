@@ -1,6 +1,13 @@
 
 #include "analyseur.h"
 
+
+void error(pcap_t *p,char *prefix)
+{
+    pcap_perror(p,prefix);
+    exit(1);
+}
+
 // idée algo au fur et a mesure des decapsulations on met les header dans trameinfo puis a la fin d'un ecaplulation (aka il n'y a plus rien aprés bootp ou si pb) on affiche les infos accumulée ainsi on afficher la version verbose 0 IP S_ip:Port --> D_ip:Port Proto et petite exeplication.
 
 void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *packet)
@@ -106,7 +113,7 @@ int main(int argc, char **argv)
         perror("gettimeofday");
     arg.starttime = starttime.tv_sec;
     if (pcap_loop(p, options.count, callback, (u_char *)&arg) == PCAP_ERROR)
-        fprintf(stderr, "Erreur pcap_loop \n"); // perror a set.qma
+        error(p,"pcap_loop error :");
 
     pcap_close(p);
 }
