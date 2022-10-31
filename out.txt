@@ -1,0 +1,677 @@
+[32m-1-[00m  [34m192.168.67.206[00m:[33m45262[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ SYN ] seq: 2243147922, ack: 0, win: 64240 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 15360, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45268[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ SYN ] seq: 572673980, ack: 0, win: 64240 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 15360, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45262[00m [31mTCP[00m [ SYN ACK ] seq: 4096134020, ack: 2243147923, win: 28960 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 15360, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45262[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 2243147923, ack: 4096134021, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45262[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2243147923, ack: 4096134021, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 32770, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45268[00m [31mTCP[00m [ SYN ACK ] seq: 977624931, ack: 572673981, win: 28960 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 15360, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45268[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 572673981, ack: 977624932, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45268[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 572673981, ack: 977624932, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 32770, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45262[00m [31mTCP[00m [ ACK ] seq: 4096134021, ack: 2243148511, win: 236 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45262[00m [31mTCP[00m [ PUSH ACK ] seq: 4096134021, ack: 2243148511, win: 236 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 48384, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45262[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 2243148511, ack: 4096134158, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45262[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2243148511, ack: 4096134158, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 26368, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45262[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2243148562, ack: 4096134158, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 35082, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45268[00m [31mTCP[00m [ ACK ] seq: 977624932, ack: 572674569, win: 236 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45268[00m [31mTCP[00m [ PUSH ACK ] seq: 977624932, ack: 572674569, win: 236 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 48384, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45268[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 572674569, ack: 977625069, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45268[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 572674569, ack: 977625069, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 26368, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45262[00m [31mTCP[00m [ ACK ] seq: 4096134158, ack: 2243149910, win: 257 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45262[00m [31mTCP[00m [ ACK ] seq: 4096134158, ack: 2243151207, win: 278 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 30725, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45262[00m [31mTCP[00m [ PUSH ACK ] seq: 4096135506, ack: 2243151207, win: 278 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 38402, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m45262[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 2243151207, ack: 4096136116, win: 493 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45268[00m [31mTCP[00m [ ACK ] seq: 977625069, ack: 572674620, win: 236 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m38620[00m --> [34m192.168.67.2[00m:[33m13568[00m [31mUDP [00mUnreconized Protocol (S 56470, D,53)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 19968, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (53)
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m53132[00m --> [34m192.168.67.2[00m:[33m13568[00m [31mUDP [00mUnreconized Protocol (S 36047, D,53)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 19968, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (53)
+
+[32m-2-[00m  [34m192.168.67.2[00m:[33m13568[00m --> [34m192.168.67.206[00m:[33m38620[00m [31mUDP [00mUnreconized Protocol (S 53, D,56470)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51456, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (56470)
+
+[32m-2-[00m  [34m192.168.67.2[00m:[33m13568[00m --> [34m192.168.67.206[00m:[33m53132[00m [31mUDP [00mUnreconized Protocol (S 53, D,36047)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 61952, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (36047)
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m22977[00m --> [34m192.168.67.2[00m:[33m13568[00m [31mUDP [00mUnreconized Protocol (S 49497, D,53)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 22528, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (53)
+
+[32m-2-[00m  [34m192.168.67.2[00m:[33m13568[00m --> [34m192.168.67.206[00m:[33m22977[00m [31mUDP [00mUnreconized Protocol (S 53, D,49497)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 22528, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (49497)
+
+[32m-2-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ SYN ] seq: 411325879, ack: 0, win: 64240 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 15360, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-3-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m49588[00m [31mTCP[00m [ SYN ACK ] seq: 4015883083, ack: 411325880, win: 65535 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-3-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 411325880, ack: 4015883084, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-3-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 411325880, ack: 4015883084, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 11522, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-3-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m49588[00m [31mTCP[00m [ ACK ] seq: 4015883084, ack: 411326397, win: 2048 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 30725, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-3-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 411326397, ack: 4015884444, win: 493 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-3-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m49588[00m [31mTCP[00m [ PUSH ACK ] seq: 4015884444, ack: 411326397, win: 2048 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 28428, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-3-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 411326397, ack: 4015887587, win: 469 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-3-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 411326397, ack: 4015887587, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 50688, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-4-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m49588[00m [31mTCP[00m [ PUSH ACK ] seq: 4015887587, ack: 411326555, win: 2047 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 23296, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-4-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 411326555, ack: 4015887638, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51210, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-4-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 411329275, ack: 4015887638, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 49154, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-4-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m49588[00m [31mTCP[00m [ ACK ] seq: 4015887638, ack: 411329275, win: 2050 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-4-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m49588[00m [31mTCP[00m [ FIN PUSH ACK ] seq: 4015887638, ack: 411329939, win: 2048 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 24580, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-4-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 411329939, ack: 4015888719, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 18176, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-4-[00m  [34m192.168.67.206[00m:[33m49588[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ FIN ACK ] seq: 411329970, ack: 4015888719, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-4-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m49588[00m [31mTCP[00m [ ACK ] seq: 4015888719, ack: 411329971, win: 2047 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-4-[00m  [34m192.168.67.206[00m:[33m63135[00m --> [34m192.168.67.2[00m:[33m13568[00m [31mUDP [00mUnreconized Protocol (S 40950, D,53)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 22528, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (53)
+
+[32m-4-[00m  [34m192.168.67.206[00m:[33m49803[00m --> [34m192.168.67.2[00m:[33m13568[00m [31mUDP [00mUnreconized Protocol (S 35778, D,53)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 22528, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (53)
+
+[32m-4-[00m  [34m192.168.67.2[00m:[33m13568[00m --> [34m192.168.67.206[00m:[33m49803[00m [31mUDP [00mUnreconized Protocol (S 53, D,35778)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 22528, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (35778)
+
+[32m-4-[00m  [34m192.168.67.2[00m:[33m13568[00m --> [34m192.168.67.206[00m:[33m63135[00m [31mUDP [00mUnreconized Protocol (S 53, D,40950)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 26624, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (40950)
+
+[32m-4-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ SYN ] seq: 2132435893, ack: 0, win: 64240 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 15360, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-5-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53674[00m [31mTCP[00m [ SYN ACK ] seq: 3557464800, ack: 2132435894, win: 65535 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-5-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 2132435894, ack: 3557464801, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-5-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2132435894, ack: 3557464801, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 11522, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-5-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53674[00m [31mTCP[00m [ ACK ] seq: 3557464801, ack: 2132436411, win: 2048 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-5-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53674[00m [31mTCP[00m [ PUSH ACK ] seq: 3557464801, ack: 2132436411, win: 2048 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 48913, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-5-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 2132436411, ack: 3557469304, win: 467 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-5-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2132436411, ack: 3557469304, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 50688, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-5-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53674[00m [31mTCP[00m [ PUSH ACK ] seq: 3557469304, ack: 2132436569, win: 2047 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 23296, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2132436569, ack: 3557469355, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51210, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2132439289, ack: 3557469355, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51210, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2132442009, ack: 3557469355, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 35075, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53674[00m [31mTCP[00m [ ACK ] seq: 3557469355, ack: 2132439289, win: 2050 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53674[00m [31mTCP[00m [ ACK ] seq: 3557469355, ack: 2132442009, win: 2050 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53674[00m [31mTCP[00m [ FIN PUSH ACK ] seq: 3557469355, ack: 2132442874, win: 2047 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 24580, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2132442874, ack: 3557470436, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 18176, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m192.168.67.206[00m:[33m53674[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ FIN ACK ] seq: 2132442905, ack: 3557470436, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53674[00m [31mTCP[00m [ ACK ] seq: 3557470436, ack: 2132442906, win: 2047 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-6-[00m  [34m192.168.67.206[00m:[33m41421[00m --> [34m192.168.67.2[00m:[33m13568[00m [31mUDP [00mUnreconized Protocol (S 52641, D,53)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 22528, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (53)
+
+[32m-6-[00m  [34m192.168.67.2[00m:[33m13568[00m --> [34m192.168.67.206[00m:[33m41421[00m [31mUDP [00mUnreconized Protocol (S 53, D,52641)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 22528, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (52641)
+
+[32m-6-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ SYN ] seq: 165894597, ack: 0, win: 64240 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 15360, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m45268[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 572674620, ack: 977625069, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 21248, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m45268[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ FIN ACK ] seq: 572674651, ack: 977625069, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53678[00m [31mTCP[00m [ SYN ACK ] seq: 193300469, ack: 165894598, win: 65535 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 165894598, ack: 193300470, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 165894598, ack: 193300470, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 11522, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45268[00m [31mTCP[00m [ ACK ] seq: 977625069, ack: 572674651, win: 236 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45268[00m [31mTCP[00m [ FIN ACK ] seq: 977625069, ack: 572674651, win: 236 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m45268[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 572674652, ack: 977625070, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45262[00m [31mTCP[00m [ FIN ACK ] seq: 4096136116, ack: 2243151207, win: 278 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m45262[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2243151207, ack: 4096136117, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 21248, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m45262[00m --> [34m130.79.254.206[00m:[33m443[00m [31mTCP[00m [ FIN ACK ] seq: 2243151238, ack: 4096136117, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45268[00m [31mTCP[00m [ ACK ] seq: 977625070, ack: 572674652, win: 236 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m130.79.254.206[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m45262[00m [31mTCP[00m [ ACK ] seq: 4096136117, ack: 2243151239, win: 278 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53678[00m [31mTCP[00m [ ACK ] seq: 193300470, ack: 165895115, win: 2048 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 30725, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 165895115, ack: 193301830, win: 493 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53678[00m [31mTCP[00m [ PUSH ACK ] seq: 193301830, ack: 165895115, win: 2048 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 28428, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 165895115, ack: 193304973, win: 469 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-7-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 165895115, ack: 193304973, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 50688, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53678[00m [31mTCP[00m [ PUSH ACK ] seq: 193304973, ack: 165895273, win: 2047 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 23296, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 165895273, ack: 193305024, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51210, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 165897993, ack: 193305024, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51210, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 165900713, ack: 193305024, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51210, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 165903433, ack: 193305024, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 64003, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53678[00m [31mTCP[00m [ ACK ] seq: 193305024, ack: 165897993, win: 2050 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53678[00m [31mTCP[00m [ ACK ] seq: 193305024, ack: 165900713, win: 2050 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53678[00m [31mTCP[00m [ ACK ] seq: 193305024, ack: 165903433, win: 2050 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53678[00m [31mTCP[00m [ FIN PUSH ACK ] seq: 193305024, ack: 165904411, win: 2046 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 24580, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 165904411, ack: 193306105, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 18176, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m192.168.67.206[00m:[33m53678[00m --> [34m20.189.173.7[00m:[33m443[00m [31mTCP[00m [ FIN ACK ] seq: 165904442, ack: 193306105, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m20.189.173.7[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m53678[00m [31mTCP[00m [ ACK ] seq: 193306105, ack: 165904443, win: 2046 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-8-[00m  [34m192.168.67.206[00m:[33m46829[00m --> [34m192.168.67.2[00m:[33m13568[00m [31mUDP [00mUnreconized Protocol (S 60854, D,53)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 19968, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (53)
+
+[32m-8-[00m  [34m192.168.67.206[00m:[33m29594[00m --> [34m192.168.67.2[00m:[33m13568[00m [31mUDP [00mUnreconized Protocol (S 39539, D,53)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 19968, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (53)
+
+[32m-9-[00m  [34m192.168.67.2[00m:[33m13568[00m --> [34m192.168.67.206[00m:[33m46829[00m [31mUDP [00mUnreconized Protocol (S 53, D,60854)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51456, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (60854)
+
+[32m-9-[00m  [34m192.168.67.2[00m:[33m13568[00m --> [34m192.168.67.206[00m:[33m29594[00m [31mUDP [00mUnreconized Protocol (S 53, D,39539)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 61952, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (39539)
+
+[32m-9-[00m  [34m192.168.67.206[00m:[33m25490[00m --> [34m192.168.67.2[00m:[33m13568[00m [31mUDP [00mUnreconized Protocol (S 37475, D,53)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 22528, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (53)
+
+[32m-9-[00m  [34m192.168.67.2[00m:[33m13568[00m --> [34m192.168.67.206[00m:[33m25490[00m [31mUDP [00mUnreconized Protocol (S 53, D,37475)
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 22528, UDP Protocol|Decode UDP: Protocol = Unreconized Protocol (37475)
+
+[32m-9-[00m  [34m192.168.67.206[00m:[33m57264[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ SYN ] seq: 2072509094, ack: 0, win: 64240 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 15360, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m57264[00m [31mTCP[00m [ SYN ACK ] seq: 1209851349, ack: 2072509095, win: 65535 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 13312, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m192.168.67.206[00m:[33m57264[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 2072509095, ack: 1209851350, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m192.168.67.206[00m:[33m57264[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2072509095, ack: 1209851350, win: 502 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 11522, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m57264[00m [31mTCP[00m [ PUSH ACK ] seq: 1209851350, ack: 2072509612, win: 2048 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 48913, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m192.168.67.206[00m:[33m57264[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ ACK ] seq: 2072509612, ack: 1209855853, win: 467 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m192.168.67.206[00m:[33m57264[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2072509612, ack: 1209855853, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 50688, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m57264[00m [31mTCP[00m [ PUSH ACK ] seq: 1209855853, ack: 2072509770, win: 2047 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 23296, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m192.168.67.206[00m:[33m57264[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2072509770, ack: 1209855904, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51210, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m192.168.67.206[00m:[33m57264[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2072512490, ack: 1209855904, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 51210, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-9-[00m  [34m192.168.67.206[00m:[33m57264[00m --> [34m52.182.141.63[00m:[33m443[00m [31mTCP[00m [ PUSH ACK ] seq: 2072515210, ack: 1209855904, win: 501 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 35075, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-10-[00m  [34m52.182.141.63[00m:[33m443[00m --> [34m192.168.67.206[00m:[33m57264[00m [31mTCP[00m [ ACK ] seq: 1209855904, ack: 2072512490, win: 2050 
+|Ethernet Decode: Data type =IP 
+	|IP Decode : Total length = 10240, TCP Protocol
+		|Decode TCP: 
+		|Decode TCP: 
+
+[32m-10-[00m 
+[34m7a:a9:6:98:56:ca[00m:[00m --> [34m0:0:0:0:0:0[00m:[00m [31mARP [00mRequest : 192.168.67.2 ask who has 192.168.67.206
+|Ethernet Decode: Data type =ARP 
+	 |ARP Decode: Hardware Address Lenght = 6 Protocol Addresse Length  =4Sender Phy Addr = 7a:a9:6:98:56:ca  Sender Protocol Addr = 192.168.67.2 Reciver Phy Addr = 0:0:0:0:0:0  Sender Protocol Addr = 192.168.67.206 
+

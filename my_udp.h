@@ -3,6 +3,7 @@
 
 #include "trameinfo.h"
 #include "my_bootp.h"
+#include "my_dns.h"
 
 #define L_SRCPORT 16
 #define L_DSTPORT 16
