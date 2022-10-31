@@ -54,7 +54,7 @@ int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Syn
     else if (op == 0x02)
     {
         char buf2[18];
-        INT2MAC(arp->sha, buf2);
+        // INT2MAC(arp->sha, buf2);
         printf("Reply %s is with physic addr %s", inet_ntoa(*arp->sp), buf2);
     }
     else

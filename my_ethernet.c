@@ -50,7 +50,8 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
         DecodeIP(packet + sizeof(struct ether_header), trameinfo);
         break;
     case (0x0806):
-        DecodeARP(packet + sizeof(struct ether_header), trameinfo);
+        // DecodeARP(packet + sizeof(struct ether_header), trameinfo);
+        printf("ARP In process");
         break;
     case (0x0835):
         printf("RARP");

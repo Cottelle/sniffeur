@@ -89,7 +89,7 @@ void PrintDNS(struct trameinfo *t)
             WriteInBuf(t, " (Unknow Error),");
         }
     else
-        WriteInBuf(t,",");
+        WriteInBuf(t, ",");
 
     if (t->verbose == 2)
         WriteInBuf(t, " QC =%i, ANC=%i, NSC=%i, ARC=%i ", dns->qdcount, dns->ancount, dns->nscount, dns->arcount);
@@ -105,7 +105,7 @@ int DecodeDNS(const u_char *packet, struct trameinfo *trameinfo)
     dns_header_t *dns = (dns_header_t *)packet;
 
     printf("DNS\33[00m");
-    printf("(%s%x) ", (trameinfo->verbose > 1) ? "id: " : "", dns->xid);
+    printf("(%s%x) ", (trameinfo->verbose > 1) ? "id: " : "", be16toh(dns->xid));
 
     switch ((dns->flags) >> 11 & 0b1111)
     {
@@ -141,9 +141,10 @@ int DecodeDNS(const u_char *packet, struct trameinfo *trameinfo)
         printf("Reponse ");
     if (dns->flags & 0b1111)
         printf("reply error ");
-    
-    printf("%s",packet+sizeof(dns_header_t));
 
-    PrintDNS(trameinfo);
+    printf("%s", packet + sizeof(dns_header_t));
+
+    if (trameinfo->verbose > 1)
+        PrintDNS(trameinfo);
     return 0;
 }
