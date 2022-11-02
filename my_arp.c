@@ -30,8 +30,8 @@ int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Syn
     char buf[18] = {};
 
     // Print S-->D ARP like SyntheseIP with great color
-    printf("\n\33[%im%s\33[00m:\33[00m", BLUE(trameinfo->color), INT2MAC(arp->sha, buf));
-    printf(" --> \33[%im%s\33[00m:\33[00m \33[%imARP \33[00m", BLUE(trameinfo->color), INT2MAC(arp->tha, buf), RED(trameinfo->color));
+    printf("\n%s%s%s:", BLUE, INT2MAC(arp->sha, buf),RESET);
+    printf(" --> %s%s%s: %sARP %s", BLUE, INT2MAC(arp->tha, buf),RESET, RED,RESET);
 
     if (arp->hw_len != 6)
     {

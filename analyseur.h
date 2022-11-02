@@ -12,6 +12,7 @@
 
 #include "my_ethernet.h"
 #include "args-parser.h"
+#include "trameinfo.h"
 
 #define BUFVERBOSE_INITSIZE 256
 
@@ -23,8 +24,6 @@ struct arg
     int Protocol;
     char **ip_src;
     char **ip_dest;
-    char color;
-
     char Other_message[2048];
 };
 

@@ -1,10 +1,9 @@
 
 #include "analyseur.h"
 
-
-void error(pcap_t *p,char *prefix)
+void error(pcap_t *p, char *prefix)
 {
-    pcap_perror(p,prefix);
+    pcap_perror(p, prefix);
     exit(1);
 }
 
@@ -14,17 +13,15 @@ void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *pack
 {
     struct arg *arg = (struct arg *)args;
 
-
-    printf("\33[%im-%li-\33[00m ", GREEN(arg->color), header->ts.tv_sec - arg->starttime);
+    printf("%s-%li-%s ", GREEN, header->ts.tv_sec - arg->starttime, RESET);
 
     struct trameinfo trameinfo;
-    
-    trameinfo.len= header->len;
+
+    trameinfo.len = header->len;
     trameinfo.packet = packet;
     trameinfo.cur = 0;
 
     trameinfo.verbose = arg->verbose;
-    trameinfo.color = arg->color;
 
     if (trameinfo.verbose > 1)
     {
@@ -75,7 +72,19 @@ int main(int argc, char **argv)
     parseArgs(argc, argv, &options);
 
     arg.verbose = options.verbose;
-    arg.color = options.colors;
+    
+    if (!options.colors)
+    {
+        GREEN = "";
+        BLUE = "";
+        RED = "";
+        YELLOW = "";
+        MAGENTA ="";
+        CYAN = "";
+        WHITE = "";
+        BLACK = "";
+        RESET = "";
+    }
 
     pcap_t *p;
 
@@ -113,7 +122,7 @@ int main(int argc, char **argv)
         perror("gettimeofday");
     arg.starttime = starttime.tv_sec;
     if (pcap_loop(p, options.count, callback, (u_char *)&arg) == PCAP_ERROR)
-        error(p,"pcap_loop error :");
+        error(p, "pcap_loop error :");
 
     pcap_close(p);
 }

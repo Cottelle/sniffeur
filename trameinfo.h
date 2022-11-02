@@ -10,14 +10,24 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define BLACK(op) 30 * (op)
+/* #define BLACK(op) 30 * (op)
 #define RED(op) 31 * (op)
 #define GREEN(op) 32 * (op)
 #define YELLOW(op) 33 * (op)
 #define BLUE(op) 34 * (op)
 #define MAGENTA(op) 35 * (op)
 #define CYAN(op) 36 * (op)
-#define WHITE(op) 37 * (op)
+#define WHITE(op) 37 * (op) */
+
+extern char *GREEN;
+extern char *BLUE;
+extern char *RED ;
+extern char *YELLOW;
+extern char *MAGENTA;
+extern char *CYAN;
+extern char *WHITE;
+extern char *BLACK;
+extern char *RESET;
 
 struct trameinfo
 {
@@ -26,7 +36,6 @@ struct trameinfo
     uint cur;         //The current place
 
     int verbose;
-    char color;
     struct ether_header *eth_header;
     void *header_lv2;
     void *header_lv3; // void * because we don't kwon the type of the header (IP ADR TCP UDP...)
@@ -50,8 +59,8 @@ char *INT2MAC(uint8_t *val, char *buf);
 void WriteInBuf(struct trameinfo *trameinfo, char *format, ...);
 
 /**
- * @brief Print major info of the current trame with the ip and port. Color is a bool indicate if the text is will colored. Use with IP protocol to show  unsincronized info (IP Port IP Port)
+ * @brief Print major info of the current trame with the ip and port. Use with IP protocol to show  unsincronized info (IP Port IP Port)
  */
-void SyntheseIP(struct ip *ip, int SP, int DP, char color);
+void SyntheseIP(struct ip *ip, int SP, int DP);
 
 #endif

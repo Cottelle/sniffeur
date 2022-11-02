@@ -12,6 +12,12 @@
         "my_arp.h": "c",
         "my_smtp.h": "c",
         "ctype.h": "c",
-        "my_udp.h": "c"
+        "my_udp.h": "c",
+        "typeinfo": "c",
+        "stdarg.h": "c",
+        "args-parser.h": "c",
+        "inttypes.h": "c",
+        "analyseur.h": "c",
+        "dns_apple.h": "c"
     }
 }

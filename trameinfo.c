@@ -1,5 +1,15 @@
 #include "trameinfo.h"
 
+char *GREEN="\33[32m";
+char *BLUE="\33[34m";
+char *RED ="\33[31m";
+char *YELLOW="\33[33m";
+char *MAGENTA="\33[35m";
+char *CYAN="\33[36m";
+char *WHITE="\33[37m";
+char *BLACK="\33[30m";
+char *RESET="\33[00m";
+
 char *INT2MAC(uint8_t *val, char *buf)
 {
     snprintf(buf, 1024, "%x:%x:%x:%x:%x:%x", val[0], val[1], val[2], val[3], val[4], val[5]);
@@ -34,10 +44,9 @@ void WriteInBuf(struct trameinfo *t, char *format, ...)
 }
 
 
-void SyntheseIP(struct ip *ip, int SP, int DP, char color)
+void SyntheseIP(struct ip *ip, int SP, int DP)
 {
-
-    printf("\33[%im%s\33[00m:\33[%im%i\33[00m", BLUE(color), inet_ntoa(ip->ip_src), YELLOW(color), SP);
-    printf(" --> \33[%im%s\33[00m:\33[%im%i\33[00m \33[%im%s\33[00m", BLUE(color), inet_ntoa(ip->ip_dst), YELLOW(color), DP, RED(color), (ip->ip_p == 0x11) ? "UDP " : ((ip->ip_p == 0x06) ? "TCP" : "??"));
+    printf("%s%s%s:%s%i%s", BLUE, inet_ntoa(ip->ip_src),RESET, YELLOW, SP,RESET);
+    printf(" --> %s%s%s:%s%i%s %s%s%s", BLUE, inet_ntoa(ip->ip_dst),RESET, YELLOW, DP,RESET, RED, (ip->ip_p == 0x11) ? "UDP " : ((ip->ip_p == 0x06) ? "TCP" : "??"),RESET);
 
 }
