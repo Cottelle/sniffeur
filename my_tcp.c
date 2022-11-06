@@ -39,7 +39,8 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
     if (trameinfo->verbose > 1)
         PrintTCP(trameinfo);
 
-    SyntheseIP((struct ip *)trameinfo->header_lv2, be16toh(tcphdr->th_sport), be16toh(tcphdr->th_dport));
+    SyntheseIP(trameinfo, be16toh(tcphdr->th_sport), be16toh(tcphdr->th_dport));
+    printf("%sTCP%s",RED,RESET);
 
     PrintTCPFlags(tcphdr->th_flags);
 

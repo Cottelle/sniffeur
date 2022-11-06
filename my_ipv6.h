@@ -5,6 +5,8 @@
 
 
 #include "trameinfo.h"
+#include "my_tcp.h"
+#include "my_udp.h"
 
 
 

@@ -121,17 +121,8 @@ int main(int argc, char **argv)
     if (gettimeofday(&starttime, NULL) == -1)
         perror("gettimeofday");
     arg.starttime = starttime.tv_sec;
-    while (1)
-    {
-        if (pcap_loop(p, options.count, callback, (u_char *)&arg) == PCAP_ERROR)
-        {
-            fprintf(stderr, "pcap_loop error :");
-            if (options.count > 0)
-                exit(2);
-            continue;
-        }
-        break;
-    }
+    if (pcap_loop(p, options.count, callback, (u_char *)&arg) == PCAP_ERROR)
+        error(p, "pcap_loop error :");
 
     pcap_close(p);
 }

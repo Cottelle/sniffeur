@@ -109,7 +109,7 @@ void PrintDHCP(struct dhcp dhcps[64], struct trameinfo *t)
 
 void DecodeDHCP(const u_char *vend, struct trameinfo *trameinfo)
 {
-    printf("DHCP ");
+    printf("%sDHCP %s",MAGENTA,RESET);
     int i = 0;
     struct dhcp dhcps[64];
     memset(dhcps, 0, 64 * sizeof(struct dhcp));

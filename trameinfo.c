@@ -49,17 +49,22 @@ void SyntheseIP(struct trameinfo *t, int SP, int DP)
     if (t->Ipv==AF_INET6)
     {
         struct ip6_hdr *ip6 = (struct ip6_hdr*)t->header_lv2;
-        src = &(ip6->ip6_src);
-        dst = &(ip6->ip6_dst);
+        src = (char *)&(ip6->ip6_src);
+        dst = (char *)&(ip6->ip6_dst);
     }
     else if (t->Ipv==AF_INET)
     {
         struct ip *ip = t->header_lv2;
-        src = &(ip->ip_src);
-        dst = &(ip->ip_dst);
+        src = (char *)&(ip->ip_src);
+        dst = (char *)&(ip->ip_dst);
     }
-    
-    printf("%s%s%s:%s%i%s", BLUE, inet_ntoa(ip->ip_src), RESET, YELLOW, SP, RESET);
-    printf(" --> %s%s%s:%s%i%s %s%s%s", BLUE, inet_ntoa(ip->ip_dst), RESET, YELLOW, DP, RESET, RED, (ip->ip_p == 0x11) ? "UDP " : ((ip->ip_p == 0x06) ? "TCP" : "??"), RESET);
+    else
+    {
+        printf("Error Ipv not set\n continue\n");
+        return;
+    }
+
+    printf("%s%s%s>%s%i%s", BLUE, inet_ntop(t->Ipv,src,buf,50), RESET, YELLOW, SP, RESET);
+    printf(" --> %s%s%s>%s%i%s ", BLUE, inet_ntop(t->Ipv,dst,buf,50), RESET, YELLOW, DP, RESET);
     // inet_ntop()
 }

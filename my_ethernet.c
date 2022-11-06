@@ -50,14 +50,14 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
         DecodeIP(packet + sizeof(*ethheader), trameinfo);
         break;
     case (0x0806):
-        DecodeARP(packet + sizeof(*ethheader), trameinfo);
-        // printf("ARP In process");
+        // DecodeARP(packet + sizeof(*ethheader), trameinfo);
+        printf("ARP In process");
         break;
     case (0x0835):
         printf("RARP");
         break;
     case (0x86DD):
-        printf("IPV6");
+        // printf("IPV6");
         DecodeIP6(packet+sizeof(*ethheader),trameinfo);
         break;
     default:

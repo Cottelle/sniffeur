@@ -47,6 +47,7 @@ void PrintUDP(struct trameinfo *t)
 
 int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
 {
+
     struct udp *udp = (struct udp *)packet;
     trameinfo->header_lv3 = (void *)packet;
 
@@ -56,7 +57,8 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
     if (trameinfo->verbose > 1)
         PrintUDP(trameinfo);
 
-    SyntheseIP((struct ip *)trameinfo->header_lv2, udp->S_Port, udp->D_Port);
+    SyntheseIP(trameinfo, udp->S_Port, udp->D_Port);
+    printf("%sUDP %s",RED,RESET);
 
     switch (udp->D_Port)
     {
