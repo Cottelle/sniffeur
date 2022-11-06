@@ -21,6 +21,9 @@
         "dns_apple.h": "c",
         "my_ipv6.h": "c",
         "ip6.h": "c",
-        "my_ethernet.h": "c"
+        "my_ethernet.h": "c",
+        "my_ip.h": "c",
+        "ip_protocol.h": "c",
+        "stdlib.h": "c"
     }
 }
