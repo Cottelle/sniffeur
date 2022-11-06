@@ -47,17 +47,18 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
     switch (ethType)
     {
     case (0x0800):
-        DecodeIP(packet + sizeof(struct ether_header), trameinfo);
+        DecodeIP(packet + sizeof(*ethheader), trameinfo);
         break;
     case (0x0806):
-        // DecodeARP(packet + sizeof(struct ether_header), trameinfo);
-        printf("ARP In process");
+        DecodeARP(packet + sizeof(*ethheader), trameinfo);
+        // printf("ARP In process");
         break;
     case (0x0835):
         printf("RARP");
         break;
     case (0x86DD):
         printf("IPV6");
+        DecodeIP6(packet+sizeof(*ethheader),trameinfo);
         break;
     default:
         printf("Unreconize Dara Type %x\n", ethType);

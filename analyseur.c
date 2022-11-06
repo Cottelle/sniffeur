@@ -72,14 +72,14 @@ int main(int argc, char **argv)
     parseArgs(argc, argv, &options);
 
     arg.verbose = options.verbose;
-    
+
     if (!options.colors)
     {
         GREEN = "";
         BLUE = "";
         RED = "";
         YELLOW = "";
-        MAGENTA ="";
+        MAGENTA = "";
         CYAN = "";
         WHITE = "";
         BLACK = "";
@@ -121,8 +121,17 @@ int main(int argc, char **argv)
     if (gettimeofday(&starttime, NULL) == -1)
         perror("gettimeofday");
     arg.starttime = starttime.tv_sec;
-    if (pcap_loop(p, options.count, callback, (u_char *)&arg) == PCAP_ERROR)
-        error(p, "pcap_loop error :");
+    while (1)
+    {
+        if (pcap_loop(p, options.count, callback, (u_char *)&arg) == PCAP_ERROR)
+        {
+            fprintf(stderr, "pcap_loop error :");
+            if (options.count > 0)
+                exit(2);
+            continue;
+        }
+        break;
+    }
 
     pcap_close(p);
 }

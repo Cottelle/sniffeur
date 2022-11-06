@@ -40,6 +40,8 @@ int DecodeIP(const u_char *packet, struct trameinfo *trameinfo)
 {
     struct ip *ip = (struct ip *)packet;
     trameinfo->header_lv2 = (void *)packet;
+    trameinfo->Ipv = AF_INET;
+
 
     trameinfo->cur+=ip->ip_hl*4;
 

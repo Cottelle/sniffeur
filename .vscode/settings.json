@@ -18,6 +18,9 @@
         "args-parser.h": "c",
         "inttypes.h": "c",
         "analyseur.h": "c",
-        "dns_apple.h": "c"
+        "dns_apple.h": "c",
+        "my_ipv6.h": "c",
+        "ip6.h": "c",
+        "my_ethernet.h": "c"
     }
 }

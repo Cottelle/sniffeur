@@ -7,6 +7,7 @@
 #include "trameinfo.h"
 
 #include "my_ip.h"
+#include "my_ipv6.h"    
 #include "my_arp.h"
 
 

@@ -6,6 +6,8 @@
 #include <stdarg.h>
 
 #include <netinet/ip.h> //For Synthèse
+#include <netinet/ip6.h>
+
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -36,6 +38,8 @@ struct trameinfo
     uint cur;         //The current place
 
     int verbose;
+
+    int Ipv;           // The ip versions (can be unused)  
     struct ether_header *eth_header;
     void *header_lv2;
     void *header_lv3; // void * because we don't kwon the type of the header (IP ADR TCP UDP...)
@@ -61,6 +65,6 @@ void WriteInBuf(struct trameinfo *trameinfo, char *format, ...);
 /**
  * @brief Print major info of the current trame with the ip and port. Use with IP protocol to show  unsincronized info (IP Port IP Port)
  */
-void SyntheseIP(struct ip *ip, int SP, int DP);
+void SyntheseIP(struct trameinfo *t, int SP, int DP);
 
 #endif

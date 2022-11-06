@@ -52,11 +52,11 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
 
     trameinfo->cur += 8;
 
-    beSUDPtoh(udp); // change the bit range
+    beSUDPtoh(udp); // change packet ideal ou pas ? 
     if (trameinfo->verbose > 1)
         PrintUDP(trameinfo);
 
-    SyntheseIP((struct ip *)trameinfo->header_lv2, (udp->S_Port), (udp->D_Port));
+    SyntheseIP((struct ip *)trameinfo->header_lv2, udp->S_Port, udp->D_Port);
 
     switch (udp->D_Port)
     {

@@ -10,8 +10,8 @@ char *(type)[] = {
     [28] "AAAA",
     [18] "AFSDB",
     [12] "PTR",
-    [6]  "SOA",
-    [5]  "CNAME",
+    [6] "SOA",
+    [5] "CNAME",
 };
 
 char *PrintDNSName(char *name, struct trameinfo *t)
@@ -86,22 +86,22 @@ char *DNSAnswer(char *next, int nb, struct my_dns *dns)
         next += sizeof(uint16_t);
         dns->anwsertab[i].raw.data = next;
 
-        switch(dns->anwsertab[i].qst.type)
+        switch (dns->anwsertab[i].qst.type)
         {
         case 1:
             printf(" %s ", inet_ntoa(*(struct in_addr *)next));
             next += dns->anwsertab[i].raw.length;
             break;
         case 28:
-        //     char buf[128];
-        //     printf(" %s ", inet_ntop(AF_INET6, next, buf, 1024));
-        printf("IP6 Addr");
+            //     char buf[128];
+            //     printf(" %s ", inet_ntop(AF_INET6, next, buf, 1024));
+            printf("IP6 Addr");
             break;
 
         default:
-            next = PrintDNSName(next, NULL);
+            // next = PrintDNSName(next, NULL);
         }
-        printf(" %s \\", type[dns->anwsertab[i].qst.type]);
+        // printf(" %s \\", type[dns->anwsertab[i].qst.type]);
     }
     return next;
 }
