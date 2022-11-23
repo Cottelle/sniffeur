@@ -61,7 +61,7 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
         DecodeIP6(packet+sizeof(*ethheader),trameinfo);
         break;
     default:
-        printf("Unreconize Dara Type %x\n", ethType);
+        printf("Unreconize Data Type %x\n", ethType);
     }
 
     

@@ -3,7 +3,7 @@
 
 
 
-char *TabIpProtocol[] =
+/*char *TabIpProtocol[] =
     {
         [HOPOPT] = "HOPOPT",
         [ICMP] = "ICMP",
@@ -143,7 +143,7 @@ char *TabIpProtocol[] =
         [WESP] = "WESP",
         [ROHC] = "ROHC",
 };
-
+*/
 void IPOption(void)
 {
     printf("There is option ??\n*");
@@ -194,7 +194,7 @@ int DecodeIP(const u_char *packet, struct trameinfo *trameinfo)
         DecodeUDP(packet + 4 * ip->ip_hl, trameinfo);
         break;
     default:
-        printf("Unreconized Protocol (%x%s)   ", ip->ip_p, (ip->ip_p < ROHC + 1) ? TabIpProtocol[ip->ip_p] : "");
+        printf("Unimplemeted Protocol %s (%x)   ", (ip->ip_p < ROHC + 1) ? TabIpProtocol[ip->ip_p] : "", ip->ip_p);
         break;
     }
     return 0;

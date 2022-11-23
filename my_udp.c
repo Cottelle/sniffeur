@@ -81,7 +81,7 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
             DecodeDNS(packet + 8, trameinfo);
             break;
         default:
-            printf("Unreconized Protocol (S %u, D,%u)", udp->S_Port, udp->D_Port);
+            printf("%sUnreconized Protocol (S %u, D,%u)%s",RED, udp->S_Port, udp->D_Port,RESET);
         }
     }
 

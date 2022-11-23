@@ -15,7 +15,7 @@ void PrintTCPFlags(uint8_t th_flags);
 /**
  * @brief Print the TCP info depence of verbose level into verbose buffer
  */
-void PrintTCP(struct trameinfo* t);
+void VerboseTCP(struct trameinfo* t);
 
 /**
  * @brief Decode TCP trame since packet

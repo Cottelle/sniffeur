@@ -12,6 +12,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+#include "ip_protocol.h"
+
 /* #define BLACK(op) 30 * (op)
 #define RED(op) 31 * (op)
 #define GREEN(op) 32 * (op)
@@ -30,6 +32,9 @@ extern char *CYAN;
 extern char *WHITE;
 extern char *BLACK;
 extern char *RESET;
+
+extern char *TabIpProtocol[];
+
 
 struct trameinfo
 {

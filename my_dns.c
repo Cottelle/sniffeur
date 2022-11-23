@@ -39,6 +39,7 @@ char *PrintDNSName(char *name, struct trameinfo *t)
     }
     return name + 1;
 }
+
 char *DNSQuestion(char *next, int nb, struct my_dns *dns)
 {
     if ((dns->questab = malloc(sizeof(dns_question_t) * nb)) == NULL)
@@ -73,6 +74,11 @@ char *DNSAnswer(char *next, int nb, struct my_dns *dns)
     {
         dns->anwsertab[i].qst.name = next;
 
+        /* if ((((unsigned char *)next)[0]) == 0xc0)
+            printf("ICI\n"); */
+
+        PrintDNSName((char *)(dns->head)+((unsigned char *)next)[1],NULL);
+        printf(" ");
         next += 2;
 
         dns->anwsertab[i].qst.type = be16toh(*(uint16_t *)next);
@@ -86,6 +92,7 @@ char *DNSAnswer(char *next, int nb, struct my_dns *dns)
         next += sizeof(uint16_t);
         dns->anwsertab[i].raw.data = next;
 
+
         switch (dns->anwsertab[i].qst.type)
         {
         case 1:
@@ -98,10 +105,13 @@ char *DNSAnswer(char *next, int nb, struct my_dns *dns)
             printf("IP6 Addr");
             break;
 
+        case 5:
+            next = PrintDNSName(next,NULL);
+            break;
         default:
             // next = PrintDNSName(next, NULL);
         }
-        // printf(" %s \\", type[dns->anwsertab[i].qst.type]);
+        printf(" %s \\", type[dns->anwsertab[i].qst.type]);
     }
     return next;
 }
