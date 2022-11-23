@@ -28,6 +28,26 @@ char *PrintDNSName(char *name, struct trameinfo *t)
             else
                 WriteInBuf(t, ".");
         }
+        if ((unsigned char)size ==0xc0)         //C0 --> spécific 
+        {
+            name++;
+            if (*((unsigned char *)name)==0x1d)
+            {
+                if (!t)
+                printf("com");
+            else
+                WriteInBuf(t, "com");
+            }
+            else 
+            {
+                if (!t)
+                printf("??");
+            else
+                WriteInBuf(t, "??");
+            }
+            name++;
+            return name;
+        }
         name++;
         for (int i = 0; i < size; i++, name++)
         {
