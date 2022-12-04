@@ -14,39 +14,19 @@ char *(type)[] = {
     [5] "CNAME",
 };
 
-char *PrintDNSName(char *name, struct trameinfo *t)
+char *PrintDNSName(char *name, struct trameinfo *t, dns_header_t *head)
 {
-    int size = *name, first = 1;
+    int size = *name;
     while ((size = *name) != 0)
     {
-        if (first)
-            first = 0;
-        else
+        if ((((unsigned char *)name)[0]) == 0xc0)
         {
-            if (!t)
-                printf(".");
-            else
-                WriteInBuf(t, ".");
-        }
-        if ((unsigned char)size ==0xc0)         //C0 --> spécific 
-        {
-            name++;
-            if (*((unsigned char *)name)==0x1d)
-            {
-                if (!t)
-                printf("com");
-            else
-                WriteInBuf(t, "com");
-            }
-            else 
-            {
-                if (!t)
-                printf("??");
-            else
-                WriteInBuf(t, "??");
-            }
-            name++;
-            return name;
+            char *recname = (char *)(head) + ((unsigned char *)name)[1];
+            PrintDNSName(recname, t, head);
+            name += 2;
+            if (!(*name))
+                return name;
+            continue;
         }
         name++;
         for (int i = 0; i < size; i++, name++)
@@ -56,6 +36,10 @@ char *PrintDNSName(char *name, struct trameinfo *t)
             else
                 WriteInBuf(t, "%c", *name);
         }
+        if (!t)
+            printf(".");
+        else
+            WriteInBuf(t, ".");
     }
     return name + 1;
 }
@@ -71,7 +55,7 @@ char *DNSQuestion(char *next, int nb, struct my_dns *dns)
     {
         dns->questab[i].name = next;
 
-        next = PrintDNSName(next, NULL);
+        next = PrintDNSName(next, NULL, dns->head);
 
         dns->questab[i].type = be16toh(*(uint16_t *)next);
         next += sizeof(uint16_t);
@@ -94,12 +78,14 @@ char *DNSAnswer(char *next, int nb, struct my_dns *dns)
     {
         dns->anwsertab[i].qst.name = next;
 
-        /* if ((((unsigned char *)next)[0]) == 0xc0)
-            printf("ICI\n"); */
+        // if ((((unsigned char *)next)[0]) == 0xc0)
+        //     {
+        // PrintDNSName((char *)(dns->head) + ((unsigned char *)next)[1], NULL,dns->head);
+        next = PrintDNSName(next, NULL, dns->head);
 
-        PrintDNSName((char *)(dns->head)+((unsigned char *)next)[1],NULL);
         printf(" ");
-        next += 2;
+        // next += 2;
+        // }
 
         dns->anwsertab[i].qst.type = be16toh(*(uint16_t *)next);
         next += sizeof(uint16_t);
@@ -112,7 +98,6 @@ char *DNSAnswer(char *next, int nb, struct my_dns *dns)
         next += sizeof(uint16_t);
         dns->anwsertab[i].raw.data = next;
 
-
         switch (dns->anwsertab[i].qst.type)
         {
         case 1:
@@ -120,16 +105,17 @@ char *DNSAnswer(char *next, int nb, struct my_dns *dns)
             next += dns->anwsertab[i].raw.length;
             break;
         case 28:
-            //     char buf[128];
-            //     printf(" %s ", inet_ntop(AF_INET6, next, buf, 1024));
-            printf("IP6 Addr");
+            char buf[40];
+            printf(" %s ", inet_ntop(AF_INET6, (void *)next, buf, 40));
+            next += dns->anwsertab[i].raw.length;
             break;
 
         case 5:
-            next = PrintDNSName(next,NULL);
+            next = PrintDNSName(next, NULL, dns->head);
             break;
         default:
-            // next = PrintDNSName(next, NULL);
+            printf(" %s Unimplemented so end \n \\", type[dns->anwsertab[i].qst.type]);
+            return next;
         }
         printf(" %s \\", type[dns->anwsertab[i].qst.type]);
     }
@@ -142,7 +128,7 @@ void PrintDNS(struct trameinfo *t)
 
     uint16_t flags = be16toh(dns->head->flags);
 
-    WriteInBuf(t, "\n\t\t\tDecode DNS: ");
+    WriteInBuf(t, "\n\t\t\t|Decode DNS: ");
 
     if (t->verbose > 2)
     {
@@ -228,8 +214,30 @@ void PrintDNS(struct trameinfo *t)
         WriteInBuf(t, " QC =%i, ANC=%i, NSC=%i, ARC=%i ", be16toh(dns->head->qdcount), be16toh(dns->head->ancount), be16toh(dns->head->nscount), be16toh(dns->head->arcount));
     else
         WriteInBuf(t, " Question Count=%i, Answer Count=%i, Name Server Count=%i, Additional Record Count=%i ", be16toh(dns->head->qdcount), be16toh(dns->head->ancount), be16toh(dns->head->nscount), be16toh(dns->head->arcount));
+    if (be16toh(dns->head->qdcount))
+        WriteInBuf(t, "\n\t\t\t\t>");
+    for (int i = 0; i < be16toh(dns->head->qdcount); i++)
+    {
+        if (t->verbose == 2)
+            WriteInBuf(t, "Q%i C:%i, ", i + 1, dns->questab[i].class);
 
-    (void)dns->head;
+        else if (dns->questab[i].class == 1)
+            WriteInBuf(t, "Query%i Class: IN, ", i + 1);
+        else
+            WriteInBuf(t, "Query%i Class: %i, ", i + 1, dns->questab[i].class);
+    }
+    if (be16toh(dns->head->ancount))
+
+        WriteInBuf(t, "\n\t\t\t\t>");
+    for (int i = 0; i < be16toh(dns->head->ancount); i++)
+    {
+        if (t->verbose == 2)
+            WriteInBuf(t, "Q%i C:%i TTL:%i, ", i + 1, dns->anwsertab[i].qst.class, dns->anwsertab[i].TTL);
+        else if (dns->anwsertab[i].qst.class == 1)
+            WriteInBuf(t, "Query%i Class: IN Time to Live:%i, ", i + 1, dns->anwsertab[i].TTL);
+        else
+            WriteInBuf(t, "Query%i Class: %i Time to Live:%i, ", i + 1, dns->anwsertab[i].qst.class, dns->anwsertab[i].TTL);
+    }
 }
 
 int DecodeDNS(const u_char *packet, struct trameinfo *trameinfo)
@@ -286,6 +294,8 @@ int DecodeDNS(const u_char *packet, struct trameinfo *trameinfo)
 
     char *next = DNSQuestion((char *)(packet + sizeof(*head)), be16toh(head->qdcount), &dns);
 
+    if (be16toh(head->ancount))
+        printf("/\\ "); // Show response start
     next = DNSAnswer(next, be16toh(head->ancount), &dns);
 
     (void)next;

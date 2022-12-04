@@ -154,7 +154,7 @@ void PrintIP(struct trameinfo *t)
     struct ip *ip = (struct ip *)t->header_lv2;
 
     WriteInBuf(t, "\n\t|IP Decode : ");
-    WriteInBuf(t, "Total length = %u, ", ip->ip_len);
+    WriteInBuf(t, "Total length = %u, ", be16toh(ip->ip_len));
     if (t->verbose > 2)
     {
         WriteInBuf(t, "IPv%u, Header length = %u*4 Bytes, ", ip->ip_v, ip->ip_hl);

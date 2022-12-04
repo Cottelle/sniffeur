@@ -5,7 +5,7 @@ void VerboseEth(struct trameinfo *t)
 {
 
     struct ether_header *ether_header = t->eth_header;
-    WriteInBuf(t, "\n|Ethernet Decode:");
+    WriteInBuf(t, "\n|Decode Ethernet :");
     char bufdest[18], bufsourc[1024];
     INT2MAC(ether_header->ether_dhost, bufdest);
     INT2MAC(ether_header->ether_shost, bufsourc);
