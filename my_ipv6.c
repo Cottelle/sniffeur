@@ -1,7 +1,5 @@
 #include "my_ipv6.h"
 
-
-
 void VerboseIP6(struct trameinfo *t)
 {
     struct ip6_hdr *ip6 = (struct ip6_hdr *)t->header_lv2;
@@ -9,8 +7,8 @@ void VerboseIP6(struct trameinfo *t)
     if (t->verbose > 2)
         WriteInBuf(t, "Verion= %i, Trafic= %i, Flow= %i", (ip6->ip6_ctlun.ip6_un1.ip6_un1_flow & 0xf0) >> 4, (ip6->ip6_ctlun.ip6_un1.ip6_un1_flow) & 0xff0f, be16toh(ip6->ip6_ctlun.ip6_un1.ip6_un1_flow >> 16));
     WriteInBuf(t, "Lenght= %i, Next= %s(%i)", ip6->ip6_ctlun.ip6_un1.ip6_un1_plen, (ip6->ip6_ctlun.ip6_un1.ip6_un1_nxt < ROHC + 1) ? TabIpProtocol[ip6->ip6_ctlun.ip6_un1.ip6_un1_nxt] : "", ip6->ip6_ctlun.ip6_un1.ip6_un1_nxt);
-    if (t->verbose>2)
-        WriteInBuf(t,", Hop limit= %i",ip6->ip6_ctlun.ip6_un1.ip6_un1_hlim);
+    if (t->verbose > 2)
+        WriteInBuf(t, ", Hop limit= %i", ip6->ip6_ctlun.ip6_un1.ip6_un1_hlim);
 }
 
 int DecodeIP6(const u_char *packet, struct trameinfo *trameinfo)
@@ -34,7 +32,11 @@ int DecodeIP6(const u_char *packet, struct trameinfo *trameinfo)
         DecodeUDP(packet + sizeof(*ip6), trameinfo);
         break;
     default:
-        printf("Unreconized Protocol %i", ip6->ip6_ctlun.ip6_un1.ip6_un1_nxt);
+        SyntheseIP(trameinfo, 0, 0);
+        if (ip6->ip6_ctlun.ip6_un1.ip6_un1_nxt >= 156)
+            printf("Unreconized Protocol %i", ip6->ip6_ctlun.ip6_un1.ip6_un1_nxt);
+        else
+            printf("%s Unumplemented",TabIpProtocol[ip6->ip6_ctlun.ip6_un1.ip6_un1_nxt]);
         break;
     }
 

@@ -1,0 +1,47 @@
+--2153- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2152- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2150- fe80::a236:9fff:fe90:9e4a>-1 --> ff02::1>-1 Unreconized Protocol 58
+--2150- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2149- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2148- 152.199.19.160>443 --> 172.17.60.136>55002 TCP [ ACK ] seq: 3951754119, ack: 3410895476, win: 135 Unreconize Protocol (55002 443)
+--2148- 172.17.60.136>55002 --> 152.199.19.160>443 TCP [ ACK ] seq: 3410895476, ack: 3951754120, win: 501 Unreconize Protocol (443 55002)
+--2147- fe80::a236:9fff:fe90:9e4a>-1 --> ff02::1>-1 Unreconized Protocol 58
+--2147- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2146- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2144- fe80::a236:9fff:fe90:9e4a>-1 --> ff02::1>-1 Unreconized Protocol 58
+--2144- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2143- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2140- fe80::a236:9fff:fe90:9e4a>-1 --> ff02::1>-1 Unreconized Protocol 58
+--2140- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2139- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2137- fe80::a236:9fff:fe90:9e4a>-1 --> ff02::1>-1 Unreconized Protocol 58
+--2137- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2137- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2136- 172.17.60.136>52329 --> 130.79.200.200>53 UDP DNS(1f74) Standart query mobile.events.data.microsoft.com. A \
+--2136- 172.17.60.136>53753 --> 130.79.200.200>53 UDP DNS(9970) Standart query mobile.events.data.microsoft.com. AAAA \
+--2136- 130.79.200.200>53 --> 172.17.60.136>53753 UDP DNS(9970) Standart query Reponse mobile.events.data.microsoft.com. AAAA \/\ mobile.events.data.microsoft.com. mobile.events.data.trafficmanager.net. CNAME \mobile.events.data.trafficmanager.net. onedscolprdcus08.centralus.cloudapp.azure.com. CNAME \
+--2136- 130.79.200.200>53 --> 172.17.60.136>52329 UDP DNS(1f74) Standart query Reponse mobile.events.data.microsoft.com. A \/\ mobile.events.data.microsoft.com. mobile.events.data.trafficmanager.net. CNAME \mobile.events.data.trafficmanager.net. onedscolprdaus02.australiasoutheast.cloudapp.azure.com. CNAME \onedscolprdaus02.australiasoutheast.cloudapp.azure.com.  104.46.162.226  A \
+--2136- 172.17.60.136>35945 --> 130.79.200.200>53 UDP DNS(ccc2) Standart query onedscolprdcus08.centralus.cloudapp.azure.com. AAAA \
+--2136- 130.79.200.200>53 --> 172.17.60.136>35945 UDP DNS(ccc2) Standart query Reponse onedscolprdcus08.centralus.cloudapp.azure.com. AAAA \
+--2136- 172.17.60.136>56206 --> 104.46.162.226>443 TCP [ SYN ] seq: 3466819367, ack: 0, win: 64240 Unreconize Protocol (443 56206)
+--2136- 104.46.162.226>443 --> 172.17.60.136>56206 TCP [ SYN ACK ] seq: 3887493292, ack: 3466819368, win: 65535 Unreconize Protocol (56206 443)
+--2136- 172.17.60.136>56206 --> 104.46.162.226>443 TCP [ ACK ] seq: 3466819368, ack: 3887493293, win: 502 Unreconize Protocol (443 56206)
+--2136- 172.17.60.136>56206 --> 104.46.162.226>443 TCP [ PUSH ACK ] seq: 3466819368, ack: 3887493293, win: 502 Unreconize Protocol (443 56206)
+--2136- 104.46.162.226>443 --> 172.17.60.136>56206 TCP [ ACK ] seq: 3887493293, ack: 3466819885, win: 2051 Unreconize Protocol (56206 443)
+--2136- 172.17.60.136>56206 --> 104.46.162.226>443 TCP [ ACK ] seq: 3466819885, ack: 3887494753, win: 493 Unreconize Protocol (443 56206)
+--2136- 104.46.162.226>443 --> 172.17.60.136>56206 TCP [ PUSH ACK ] seq: 3887494753, ack: 3466819885, win: 2051 Unreconize Protocol (56206 443)
+--2136- 172.17.60.136>56206 --> 104.46.162.226>443 TCP [ ACK ] seq: 3466819885, ack: 3887497798, win: 470 Unreconize Protocol (443 56206)
+--2136- 172.17.60.136>56206 --> 104.46.162.226>443 TCP [ PUSH ACK ] seq: 3466819885, ack: 3887497798, win: 501 Unreconize Protocol (443 56206)
+--2135- 104.46.162.226>443 --> 172.17.60.136>56206 TCP [ PUSH ACK ] seq: 3887497798, ack: 3466820043, win: 2050 Unreconize Protocol (56206 443)
+--2135- 172.17.60.136>56206 --> 104.46.162.226>443 TCP [ PUSH ACK ] seq: 3466820043, ack: 3887497849, win: 501 Unreconize Protocol (443 56206)
+--2135- 104.46.162.226>443 --> 172.17.60.136>56206 TCP [ ACK ] seq: 3887497849, ack: 3466821198, win: 2053 Unreconize Protocol (56206 443)
+--2134- fe80::a236:9fff:fe90:9e4a>-1 --> ff02::1>-1 Unreconized Protocol 58
+--2134- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2134- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2132- 104.46.162.226>443 --> 172.17.60.136>56206 TCP [ FIN PUSH ACK ] seq: 3887497849, ack: 3466821198, win: 2053 Unreconize Protocol (56206 443)
+--2132- 172.17.60.136>56206 --> 104.46.162.226>443 TCP [ PUSH ACK ] seq: 3466821198, ack: 3887498283, win: 501 Unreconize Protocol (443 56206)
+--2132- 172.17.60.136>56206 --> 104.46.162.226>443 TCP [ FIN ACK ] seq: 3466821229, ack: 3887498283, win: 501 Unreconize Protocol (443 56206)
+--2132- 104.46.162.226>443 --> 172.17.60.136>56206 TCP [ ACK ] seq: 3887498283, ack: 3466821230, win: 2053 Unreconize Protocol (56206 443)
+--2131- fe80::a236:9fff:fe90:9e4a>-1 --> ff02::1>-1 Unreconized Protocol 58
+--2131- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0
+--2130- fe80::5a5a:e7b3:c637:6b70>-1 --> ff02::16>-1 Unreconized Protocol 0

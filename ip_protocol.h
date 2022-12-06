@@ -142,9 +142,7 @@
 #define ROHC 0x8e
 
 
-// Path: ip.h
-/*
-char *TabIpProtocol[]=
+/*char *TabIpProtocol[]=
 {
     [HOPOPT] = "HOPOPT",
     [ICMP] = "ICMP",
@@ -283,7 +281,8 @@ char *TabIpProtocol[]=
     [Shim6] = "Shim6",
     [WESP] = "WESP",
     [ROHC] = "ROHC",
-};*/
+};
+*/
 
 
 #endif

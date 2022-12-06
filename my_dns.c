@@ -24,9 +24,7 @@ char *PrintDNSName(char *name, struct trameinfo *t, dns_header_t *head)
             char *recname = (char *)(head) + ((unsigned char *)name)[1];
             PrintDNSName(recname, t, head);
             name += 2;
-            if (!(*name))
-                return name;
-            continue;
+            return name;
         }
         name++;
         for (int i = 0; i < size; i++, name++)

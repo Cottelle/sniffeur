@@ -33,7 +33,9 @@ extern char *WHITE;
 extern char *BLACK;
 extern char *RESET;
 
-extern char *TabIpProtocol[];
+extern char TabIpProtocol[143][20];
+
+extern char WellKnowPort[][];
 
 
 struct trameinfo
