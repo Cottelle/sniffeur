@@ -24,6 +24,11 @@
         "my_ethernet.h": "c",
         "my_ip.h": "c",
         "ip_protocol.h": "c",
-        "stdlib.h": "c"
-    }
+        "stdlib.h": "c",
+        "my_telnet.h": "c",
+        "my_dns.h": "c",
+        "my_http.h": "c"
+    },
+    "nrf-connect.topdir": "${nrf-connect.sdk:2.0.2}",
+    "nrf-connect.toolchain.path": "${nrf-connect.toolchain:2.0.2}"
 }

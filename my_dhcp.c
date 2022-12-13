@@ -54,7 +54,7 @@ void PrintDHCP(struct dhcp dhcps[64], struct trameinfo *t)
     char name[16];
     if (t->verbose > 2)
     {
-        printf("\n|Decode DHCP: ");
+        printf("\n|DHCP: ");
         for (int i = 0; i < 64; i++)
             if (dhcps[i].present)
             {
@@ -86,7 +86,7 @@ void PrintDHCP(struct dhcp dhcps[64], struct trameinfo *t)
     }
     else // verbose ==2
     {
-        printf("|Decode DHCP: ");
+        printf("|DHCP: ");
         for (int i = 0; i < 64; i++)
             if (dhcps[i].present)
             {

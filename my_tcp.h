@@ -5,6 +5,8 @@
 
 #include "trameinfo.h"
 #include "my_smtp.h"
+#include "my_telnet.h"
+#include "my_http.h"
 
 
 /**

@@ -24,7 +24,7 @@ void VerboseTCP(struct trameinfo *t)
 {
 
     struct tcphdr *tcphdr = (struct tcphdr *)t->header_lv3;
-    WriteInBuf(t, "\n\t\t|Decode TCP: ");
+    WriteInBuf(t, "\n\t\t|TCP: ");
     if (t->verbose > 2)
         WriteInBuf(t, "Checksum= %u, Urgent Pointeur= %u ", tcphdr->check, tcphdr->urg_ptr);
     WriteInBuf(t,"Data offset= %u",tcphdr->th_off);
@@ -49,6 +49,12 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
 
     if (be16toh(tcphdr->th_dport) == 25 || be16toh(tcphdr->th_sport) == 25)
         DecodeSMTP(packet + (tcphdr->th_off * 4), trameinfo);
+
+    else if (be16toh(tcphdr->th_dport) == 23 || be16toh(tcphdr->th_sport) == 23)
+        DecodeTELNET(packet + (tcphdr->th_off * 4), trameinfo);
+
+    else if (be16toh(tcphdr->th_dport) == 80 || be16toh(tcphdr->th_sport) == 80)
+        DecodeHTTP(packet + (tcphdr->th_off * 4), trameinfo);
 
     else
         printf("%sUnreconize Protocol (%i %i)%s",RED,be16toh(tcphdr->th_dport),be16toh(tcphdr->th_sport),RESET);

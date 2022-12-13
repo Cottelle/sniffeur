@@ -35,7 +35,6 @@ extern char *RESET;
 
 extern char TabIpProtocol[143][20];
 
-extern char WellKnowPort[][];
 
 
 struct trameinfo
@@ -69,9 +68,16 @@ char *INT2MAC(uint8_t *val, char *buf);
  */
 void WriteInBuf(struct trameinfo *trameinfo, char *format, ...);
 
+
+
 /**
  * @brief Print major info of the current trame with the ip and port. Use with IP protocol to show  unsincronized info (IP Port IP Port)
  */
 void SyntheseIP(struct trameinfo *t, int SP, int DP);
+
+/**
+ * @brief Same but without port (fort uncomplete decode)
+ */
+void SyntheseIPU(struct trameinfo *t);
 
 #endif

@@ -5,7 +5,7 @@ void VerboseEth(struct trameinfo *t)
 {
 
     struct ether_header *ether_header = t->eth_header;
-    WriteInBuf(t, "\n|Decode Ethernet :");
+    WriteInBuf(t, "\n|Ethernet :");
     char bufdest[18], bufsourc[1024];
     INT2MAC(ether_header->ether_dhost, bufdest);
     INT2MAC(ether_header->ether_shost, bufsourc);
@@ -50,14 +50,13 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
         DecodeIP(packet + sizeof(*ethheader), trameinfo);
         break;
     case (0x0806):
-        DecodeARP(packet + sizeof(*ethheader), trameinfo);
-        // printf("ARP In process");
+        // DecodeARP(packet + sizeof(*ethheader), trameinfo);
+        printf("ARP In process");
         break;
     case (0x0835):
         printf("RARP");
         break;
     case (0x86DD):
-        // printf("IPV6");
         DecodeIP6(packet+sizeof(*ethheader),trameinfo);
         break;
     default:

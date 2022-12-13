@@ -6,7 +6,7 @@ void PrintBootp(struct trameinfo *t)
 
     if (t->verbose > 2)
         WriteInBuf(t, "\n");
-    WriteInBuf(t, "|Decode Bootp: MyIP= %s, ", inet_ntoa(bootp->ciaddr));
+    WriteInBuf(t, "|Bootp: MyIP= %s, ", inet_ntoa(bootp->ciaddr));
     WriteInBuf(t, "YourIP= %s, ", inet_ntoa(bootp->yiaddr));
     WriteInBuf(t, "ServIP= %s, ", inet_ntoa(bootp->siaddr));
     WriteInBuf(t, "GetwayIP= %s, ", inet_ntoa(bootp->giaddr));

@@ -1,9 +1,5 @@
 #include "my_dns.h"
 
-// /**
-//  * @brief Print the TCP flags
-//  */
-// void PrintTCPFlags(uint8_t th_flags);
 
 char *(type)[] = {
     [1] "A",
@@ -126,7 +122,7 @@ void PrintDNS(struct trameinfo *t)
 
     uint16_t flags = be16toh(dns->head->flags);
 
-    WriteInBuf(t, "\n\t\t\t|Decode DNS: ");
+    WriteInBuf(t, "\n\t\t\t|DNS: ");
 
     if (t->verbose > 2)
     {
