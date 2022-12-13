@@ -116,7 +116,7 @@ char *DNSAnswer(char *next, int nb, struct my_dns *dns)
     return next;
 }
 
-void PrintDNS(struct trameinfo *t)
+void VerboseDNS(struct trameinfo *t)
 {
     struct my_dns *dns = (struct my_dns *)t->header_lv4;
 
@@ -226,11 +226,11 @@ void PrintDNS(struct trameinfo *t)
     for (int i = 0; i < be16toh(dns->head->ancount); i++)
     {
         if (t->verbose == 2)
-            WriteInBuf(t, "Q%i C:%i TTL:%i, ", i + 1, dns->anwsertab[i].qst.class, dns->anwsertab[i].TTL);
+            WriteInBuf(t, "R%i C:%i TTL:%i, ", i + 1, dns->anwsertab[i].qst.class, dns->anwsertab[i].TTL);
         else if (dns->anwsertab[i].qst.class == 1)
-            WriteInBuf(t, "Query%i Class: IN Time to Live:%i, ", i + 1, dns->anwsertab[i].TTL);
+            WriteInBuf(t, "Response%i Class: IN Time to Live:%i, ", i + 1, dns->anwsertab[i].TTL);
         else
-            WriteInBuf(t, "Query%i Class: %i Time to Live:%i, ", i + 1, dns->anwsertab[i].qst.class, dns->anwsertab[i].TTL);
+            WriteInBuf(t, "Response%i Class: %i Time to Live:%i, ", i + 1, dns->anwsertab[i].qst.class, dns->anwsertab[i].TTL);
     }
 }
 
@@ -295,6 +295,6 @@ int DecodeDNS(const u_char *packet, struct trameinfo *trameinfo)
     (void)next;
 
     if (trameinfo->verbose > 1)
-        PrintDNS(trameinfo);
+        VerboseDNS(trameinfo);
     return 0;
 }

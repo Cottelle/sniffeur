@@ -56,6 +56,9 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
     else if (be16toh(tcphdr->th_dport) == 80 || be16toh(tcphdr->th_sport) == 80)
         DecodeHTTP(packet + (tcphdr->th_off * 4), trameinfo);
 
+    else if (be16toh(tcphdr->th_dport) == 110 || be16toh(tcphdr->th_sport) == 110)
+        DecodePOP3(packet + (tcphdr->th_off * 4), trameinfo);
+
     else
         printf("%sUnreconize Protocol (%i %i)%s",RED,be16toh(tcphdr->th_dport),be16toh(tcphdr->th_sport),RESET);
 

@@ -13,6 +13,9 @@ void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *pack
 {
     struct arg *arg = (struct arg *)args;
 
+    if (arg->starttime < 0)
+        arg->starttime = header->ts.tv_sec;
+
     printf("%s-%li-%s ", GREEN, header->ts.tv_sec - arg->starttime, RESET);
 
     struct trameinfo trameinfo;
@@ -111,16 +114,22 @@ int main(int argc, char **argv)
             exit(1);
         }
     }
-
     else
     {
         fprintf(stderr, "Not interface chosen please chose with -i <interface> option or -o <file_name> for offline\n");
         exit(2);
     }
 
-    if (gettimeofday(&starttime, NULL) == -1)
-        perror("gettimeofday");
-    arg.starttime = starttime.tv_sec;
+    if (options.interface)
+    {
+
+        if (gettimeofday(&starttime, NULL) == -1)
+            perror("gettimeofday");
+        arg.starttime = starttime.tv_sec;
+    }
+    else
+        arg.starttime = -1;
+
     if (pcap_loop(p, options.count, callback, (u_char *)&arg) == PCAP_ERROR)
         error(p, "pcap_loop error :");
 

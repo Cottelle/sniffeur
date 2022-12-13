@@ -7,6 +7,7 @@
 #include "my_smtp.h"
 #include "my_telnet.h"
 #include "my_http.h"
+#include "my_pop3.h"
 
 
 /**

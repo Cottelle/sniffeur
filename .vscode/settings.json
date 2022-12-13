@@ -27,7 +27,8 @@
         "stdlib.h": "c",
         "my_telnet.h": "c",
         "my_dns.h": "c",
-        "my_http.h": "c"
+        "my_http.h": "c",
+        "my_pop3.h": "c"
     },
     "nrf-connect.topdir": "${nrf-connect.sdk:2.0.2}",
     "nrf-connect.toolchain.path": "${nrf-connect.toolchain:2.0.2}"

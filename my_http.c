@@ -4,7 +4,7 @@ void VerboseHTTP(struct trameinfo *t)
 {
     if ((int)(t->len - t->cur) <= 0)
         return;
-    WriteInBuf(t, "\n\t\t\t|HTTP\n: ");
+    WriteInBuf(t, "\n\t\t\t|HTTP:\n ");
     const u_char *http = (const u_char *)t->header_lv4;
     for (int i = 0; i < (int)(t->len - t->cur) && (http[i] != '\n' || t->verbose == 3); i++)
     {
