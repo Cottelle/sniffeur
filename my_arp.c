@@ -32,7 +32,6 @@ int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Syn
     // Print S-->D ARP like SyntheseIP with great color
     printf("\n%s%s%s:", BLUE, INT2MAC(arp->sha, buf),RESET);
     printf(" --> %s%s%s: %sARP %s", BLUE, INT2MAC(arp->tha, buf),RESET, RED,RESET);
-    printf("Ici\n");
     if (arp->hw_len != 6)
     {
         printf("No Ethernet lenght");
