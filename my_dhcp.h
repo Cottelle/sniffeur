@@ -31,17 +31,6 @@ struct dhcp
 };
 
 
-
-/**
- * @brief Resolve DHCP's names code
- */
-void DHCPnames_reso(int code, char *buf);
-
-/**
- * @brief Print the DHCP trame's info depance on verbose level into verbose buffer
- */
-void PrintDHCP(struct dhcp dhcps[64], struct trameinfo *t);
-
 /**
  * @brief Decode the DCHP info after the magic cookie (pointed by vend)
  */

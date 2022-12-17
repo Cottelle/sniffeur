@@ -1,6 +1,7 @@
 #ifndef MYARP
 #define MYARP
 
+#include <net/if_arp.h>
 #include "trameinfo.h"
 
 struct arp
@@ -17,12 +18,6 @@ struct arp
 
     struct in_addr *sp,*tp;     //We can't put struct in_addr in the cast up because unsigned char is smaller then struct in_addr
 };
-#include <net/if_arp.h>
-
-/**
- * @brief Print the ARP trame's info depance on verbose level into verbose buffer
- */
-void PrintARP(struct arp *arp, struct trameinfo *t);
 
 /**
  * @brief Decode the ARP info since packet

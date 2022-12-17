@@ -8,17 +8,7 @@
 #include "my_telnet.h"
 #include "my_http.h"
 #include "my_pop3.h"
-
-
-/**
- * @brief Print the TCP flags 
- */
-void PrintTCPFlags(uint8_t th_flags);
-
-/**
- * @brief Print the TCP info depence of verbose level into verbose buffer
- */
-void VerboseTCP(struct trameinfo* t);
+#include "my_ftp.h"
 
 /**
  * @brief Decode TCP trame since packet

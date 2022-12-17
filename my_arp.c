@@ -1,7 +1,7 @@
 /* ARP Ne semble pas marcher quand c'est un partage de connexion */
 #include "my_arp.h"
 
-void PrintARP(struct arp *arp, struct trameinfo *t)
+void VerboseARP(struct arp *arp, struct trameinfo *t)
 {
     if (t->verbose == 3)
     {
@@ -61,6 +61,6 @@ int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Syn
         printf("Unknown %i", arp->op);
 
     if (trameinfo->verbose > 1)
-        PrintARP(arp, trameinfo);
+        VerboseARP(arp, trameinfo);
     return 0;
 }

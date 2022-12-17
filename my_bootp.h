@@ -32,12 +32,6 @@ struct bootp
     const u_char *file;
     const uint16_t *vend;
 };
-
-/**
- * @brief Print the Bootp info depence of verbose level into verbose buffer
- */
-void PrintBootp(struct trameinfo *t);
-
 /**
  * @brief Decode Bootp trame since packet
  */

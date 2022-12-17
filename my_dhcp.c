@@ -49,7 +49,7 @@ void DHCPnames_reso(int code, char *buf)
     return;
 }
 
-void PrintDHCP(struct dhcp dhcps[64], struct trameinfo *t)
+void VerboseDHCP(struct dhcp dhcps[64], struct trameinfo *t)
 {
     char name[16];
     if (t->verbose > 2)
@@ -160,5 +160,5 @@ void DecodeDHCP(const u_char *vend, struct trameinfo *trameinfo)
         printf("]");
     }
     if (trameinfo->verbose > 1)
-        PrintDHCP(dhcps, trameinfo);
+        VerboseDHCP(dhcps, trameinfo);
 }

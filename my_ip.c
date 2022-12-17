@@ -5,10 +5,10 @@
 
 void IPOption(void)
 {
-    printf("There is option ??\n*");
+    printf("There is option ");
 }
 
-void PrintIP(struct trameinfo *t)
+void VerboseIP(struct trameinfo *t)
 {
     struct ip *ip = (struct ip *)t->header_lv2;
 
@@ -38,7 +38,7 @@ int DecodeIP(const u_char *packet, struct trameinfo *trameinfo)
 
     if (trameinfo->verbose > 1)
     {
-        PrintIP(trameinfo);
+        VerboseIP(trameinfo);
     }
 
     if (ip->ip_hl > 5)

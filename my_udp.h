@@ -17,15 +17,6 @@ struct udp
     unsigned int Length : L_LGTH;
     unsigned int Sum : L_SUM;
 };
-/**
- * @brief Transform the udp struct with the correct endien                                     < ----------------------------------------------------------
- */
-void beSUDPtoh(struct udp *udp);
-
-/**
- * @brief Print the UDP trame's info depance on verbose level into verbose buffer
- */
-void PrintUDP(struct trameinfo *t);
 
 /**
  * @brief Decode the UDP's info since packet

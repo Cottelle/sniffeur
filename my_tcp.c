@@ -59,8 +59,13 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
     else if (be16toh(tcphdr->th_dport) == 110 || be16toh(tcphdr->th_sport) == 110)
         DecodePOP3(packet + (tcphdr->th_off * 4), trameinfo);
 
+    else if (be16toh(tcphdr->th_dport) == 20 || be16toh(tcphdr->th_sport) == 20)
+        DecodeFTP(packet + (tcphdr->th_off * 4), trameinfo,0);
+    else if (be16toh(tcphdr->th_dport) == 21 || be16toh(tcphdr->th_sport) == 21)
+        DecodeFTP(packet + (tcphdr->th_off * 4), trameinfo,1);
+
     else
-        printf("%sUnreconize Protocol (%i %i)%s",RED,be16toh(tcphdr->th_dport),be16toh(tcphdr->th_sport),RESET);
+        printf("%sUnreconize Protocol (S%i D%i)%s",RED,be16toh(tcphdr->th_sport),be16toh(tcphdr->th_dport),RESET);
 
     return 0;
 }

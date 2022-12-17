@@ -1,6 +1,6 @@
 #include "my_bootp.h"
 
-void PrintBootp(struct trameinfo *t)
+void VerboseBootp(struct trameinfo *t)
 {
     struct bootp *bootp = (struct bootp *)t->header_lv4;
 
@@ -19,7 +19,7 @@ int DecodeBootp(const u_char *packet, struct trameinfo *trameinfo)
     trameinfo->cur+=HEADER_LEN + SNAME_LEN + FILE_LEN;
 
     if (trameinfo->verbose > 1)
-        PrintBootp(trameinfo);
+        VerboseBootp(trameinfo);
 
 
     bootp->vend = (const uint16_t *)(packet + HEADER_LEN + SNAME_LEN + FILE_LEN);

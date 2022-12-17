@@ -14,14 +14,6 @@
 
 #include "ip_protocol.h"
 
-/* #define BLACK(op) 30 * (op)
-#define RED(op) 31 * (op)
-#define GREEN(op) 32 * (op)
-#define YELLOW(op) 33 * (op)
-#define BLUE(op) 34 * (op)
-#define MAGENTA(op) 35 * (op)
-#define CYAN(op) 36 * (op)
-#define WHITE(op) 37 * (op) */
 
 extern char *GREEN;
 extern char *BLUE;
@@ -57,6 +49,9 @@ struct trameinfo
 
 
 };
+
+
+/* Usefull function for many protocol*/
 
 /**
  * @brief Convert a int into an physical addresse (char *). And return buf for easy print. buf size must >17

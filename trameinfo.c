@@ -154,11 +154,6 @@ char TabIpProtocol[143][20] = {
     "Ethernet",
 };
 
-/*extern char WellKnowPort[][20]={
-    [443] = "HTTPS",
-    [7] ="echo",
-    []
-}*/
 
 char *INT2MAC(uint8_t *val, char *buf)
 {

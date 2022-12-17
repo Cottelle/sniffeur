@@ -34,8 +34,6 @@
 #define PRAGMA_HEARTBEAT 0x3C
 #define EXOPL 0xFF
 
-
-
 #define SE 0xF0
 #define NOP 0xF1
 #define DM 0xF2
@@ -52,8 +50,6 @@
 #define DO 0xFD
 #define DONT 0xFE
 #define IAC 0xFF
-
-
 
 
 

@@ -95,13 +95,13 @@ int main(int argc, char **argv)
     {
         if (pcap_lookupnet(options.interface, &netaddr, &netmask, errbuf) == -1)
         {
-            fprintf(stderr, "Erre pcap_looupnet: %s\n", errbuf);
+            fprintf(stderr, "Error pcap_looupnet: %s\n", errbuf);
             exit(1);
         }
         p = pcap_open_live(options.interface, 1024, 1, 1000, errbuf);
         if (p == NULL)
         {
-            fprintf(stderr, "Erre pcap_open_live: %s\n", errbuf);
+            fprintf(stderr, "Error pcap_open_live: %s\n", errbuf);
             exit(1);
         }
     }
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
         p = pcap_open_offline(options.off_file, errbuf);
         if (!p)
         {
-            fprintf(stderr, "Erre pcap_open_offline: %s\n", errbuf);
+            fprintf(stderr, "Error pcap_open_offline: %s\n", errbuf);
             exit(1);
         }
     }
@@ -118,6 +118,21 @@ int main(int argc, char **argv)
     {
         fprintf(stderr, "Not interface chosen please chose with -i <interface> option or -o <file_name> for offline\n");
         exit(2);
+    }
+
+    if(options.filter)
+    {
+        struct bpf_program fp;
+        if (pcap_compile(p,&fp,options.filter,0,0)==-1)
+        {
+            fprintf(stderr,"Error pcap_compile\n");
+            exit(1);
+        }
+        if (pcap_setfilter(p,&fp)==-1)
+        {
+            fprintf(stderr,"Error pcap_setfilter\n");
+            exit(1);
+        }
     }
 
     if (options.interface)

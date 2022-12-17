@@ -8,11 +8,11 @@ void beSUDPtoh(struct udp *udp)
     udp->Sum = be16toh(udp->Sum);
 }
 
-void PrintUDP(struct trameinfo *t)
+void VerboseUDP(struct trameinfo *t)
 {
 
     struct udp *udp = (struct udp *)t->header_lv3;
-    WriteInBuf(t, "\n\t\t|Decode UDP: ");
+    WriteInBuf(t, "\n\t\t|UDP: ");
     if (t->verbose > 2)
         WriteInBuf(t, "Length = %u, Checksum = %u, ", udp->Length, udp->Sum);
     WriteInBuf(t, "Protocol = ");
@@ -55,7 +55,7 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
 
     beSUDPtoh(udp); // change packet ideal ou pas ? 
     if (trameinfo->verbose > 1)
-        PrintUDP(trameinfo);
+        VerboseUDP(trameinfo);
 
     SyntheseIP(trameinfo, udp->S_Port, udp->D_Port);
     printf("%sUDP %s",RED,RESET);
