@@ -12,11 +12,11 @@ void printhelp(void)
 {
 
     printf("Usage : analyseur [OPTION]");
-    printf("\n\n  -i <interface>     Listen on this interface (default \?\?)");
+    printf("\n\n  -i <interface>       Listen on this interface");
     printf("\n  -o <file>            Listen on the file (offline)");
     printf("\n  -f <filter>          Use filter");
-    printf("\n  -c <number>          Listen number packet after stop (-1 or default to ifinit lopp)");
-    printf("\n  -v <level>           Print info with diffrent verbose level (1 -low | 2 - meduim | 3 -lot");
+    printf("\n  -c <number>          Listen number packet after stop (-1 or default to ifinit loop)");
+    printf("\n  -v <level>           Print info with diffrent verbose level (1 -low | 2 - meduim | 3 -lot)");
     printf("\n  -u                   Don't print with color\n\n");
     return;
 }
