@@ -18,7 +18,7 @@ void VerboseARP(struct arp *arp, struct trameinfo *t)
     WriteInBuf(t, "Reciver Phy Addr = %s  Sender Protocol Addr = %s ", INT2MAC(arp->tha, buf), inet_ntoa(*arp->tp));
 }
 
-int DecodeARP(const u_char *packect, struct trameinfo *trameinfo) // ajouter Synthese ?? oui si avec brocast
+int DecodeARP(const u_char *packect, struct trameinfo *trameinfo)
 {
     // (void)trameinfo;
     struct arp *arp = (struct arp *)packect;

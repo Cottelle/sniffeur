@@ -10,7 +10,7 @@ char *WHITE = "\33[37m";
 char *BLACK = "\33[30m";
 char *RESET = "\33[00m";
 
-char TabIpProtocol[143][20] = {
+char TabIpProtocol[143][20] = {             //All ip protocol (with correct number)
     "HOPOPT",
     "ICMP",
     "IGMP",

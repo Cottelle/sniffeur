@@ -8,7 +8,7 @@ void PrintTCPFlags(uint8_t th_flags)
     {
         if (th_flags & i)
         {
-            if (first)
+            if (first)          //evite de print [] si il n'y a pas de flags
             {
                 printf(" [ ");
                 first = 0;
@@ -47,6 +47,7 @@ int DecodeTCP(const u_char *packet, struct trameinfo *trameinfo)
 
     printf(" seq: %u, ack: %u, win: %u ", be32toh(tcphdr->th_seq), be32toh(tcphdr->th_ack), be16toh(tcphdr->th_win));
 
+    //Match le port (source ou de destination) avec un protocol connu
     if (be16toh(tcphdr->th_dport) == 25 || be16toh(tcphdr->th_sport) == 25)
         DecodeSMTP(packet + (tcphdr->th_off * 4), trameinfo);
 

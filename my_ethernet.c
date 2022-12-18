@@ -40,7 +40,7 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
 
     trameinfo->cur+=sizeof(struct ether_header);
 
-    if (trameinfo->verbose>1)
+    if (trameinfo->verbose>1)       //Si verbose remplissage des infos dans le buffer
         VerboseEth(trameinfo);
 
     uint32_t ethType = ((ethheader->ether_type << 8) + (ethheader->ether_type >> 8)) & (0x0000000FFFF); // INversion ABCD --> CDAB
@@ -57,7 +57,7 @@ int DecodeEthernet(const u_char *packet, struct trameinfo *trameinfo)
         DecodeIP6(packet+sizeof(*ethheader),trameinfo);
         break;
     default:
-        printf("Unreconize Data Type %x\n", ethType);
+        printf("Unreconize Data Type %x", ethType);
     }
 
     

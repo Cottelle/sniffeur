@@ -1,16 +1,15 @@
 #include "my_dns.h"
 
-
 char *(type)[] = {
     [1] "A",
-    [28] "AAAA",
-    [18] "AFSDB",
-    [12] "PTR",
-    [6] "SOA",
-    [5] "CNAME",
+    [28] "AAAA",        
+    [18] "AFSDB",   //pas implémenté
+    [12] "PTR",     //pas implémenté
+    [6] "SOA",      //pas implémenté
+    [5] "CNAME",        
 };
 
-char *PrintDNSName(char *name, struct trameinfo *t, dns_header_t *head)
+char *PrintDNSName(char *name, struct trameinfo *t, dns_header_t *head)     //Print dns name (google.com.), recursif
 {
     int size = *name;
     while ((size = *name) != 0)
@@ -38,7 +37,7 @@ char *PrintDNSName(char *name, struct trameinfo *t, dns_header_t *head)
     return name + 1;
 }
 
-char *DNSQuestion(char *next, int nb, struct my_dns *dns)
+char *DNSQuestion(char *next, int nb, struct my_dns *dns)      //decode nb dns question 
 {
     if ((dns->questab = malloc(sizeof(dns_question_t) * nb)) == NULL)
     {
@@ -61,7 +60,7 @@ char *DNSQuestion(char *next, int nb, struct my_dns *dns)
     return next;
 }
 
-char *DNSAnswer(char *next, int nb, struct my_dns *dns)
+char *DNSAnswer(char *next, int nb, struct my_dns *dns)         //decode nb dns answer 
 {
     if ((dns->anwsertab = malloc(sizeof(struct dns_answer) * nb)) == NULL)
     {
@@ -71,15 +70,9 @@ char *DNSAnswer(char *next, int nb, struct my_dns *dns)
     for (int i = 0; i < nb; i++)
     {
         dns->anwsertab[i].qst.name = next;
-
-        // if ((((unsigned char *)next)[0]) == 0xc0)
-        //     {
-        // PrintDNSName((char *)(dns->head) + ((unsigned char *)next)[1], NULL,dns->head);
         next = PrintDNSName(next, NULL, dns->head);
 
         printf(" ");
-        // next += 2;
-        // }
 
         dns->anwsertab[i].qst.type = be16toh(*(uint16_t *)next);
         next += sizeof(uint16_t);
@@ -124,7 +117,7 @@ void VerboseDNS(struct trameinfo *t)
 
     WriteInBuf(t, "\n\t\t\t|DNS: ");
 
-    if (t->verbose > 2)
+    if (t->verbose > 2)                 //Flags
     {
         WriteInBuf(t, "Othors Flags {");
         if (flags >> 10 & 1)
@@ -150,7 +143,7 @@ void VerboseDNS(struct trameinfo *t)
     }
     WriteInBuf(t, "}");
 
-    WriteInBuf(t, ", Reply code %i", flags & 0b1111);
+    WriteInBuf(t, ", Reply code %i", flags & 0b1111);       //Reply code decode
     if (t->verbose > 2)
         switch (flags & 0b1111)
         {
@@ -243,8 +236,9 @@ int DecodeDNS(const u_char *packet, struct trameinfo *trameinfo)
 
     dns.head = head;
 
-    printf("%sDNS%s", MAGENTA, RESET);
-    printf("(%s%x) ", (trameinfo->verbose > 1) ? "id: " : "", be16toh(head->xid));
+    printf("%sDNS%s ", MAGENTA, RESET);
+    if (trameinfo->verbose > 1)
+        printf("(%s%x) ", (trameinfo->verbose > 2) ? "id: " : "", be16toh(head->xid));
 
     uint16_t flags = be16toh(head->flags);
 

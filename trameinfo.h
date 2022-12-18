@@ -35,7 +35,7 @@ struct trameinfo
     uint len;         //The len of the trame
     uint cur;         //The current place
 
-    int verbose;
+    int verbose;     //verbose value (1 = low | 2 = meduim | 3  = high (|4 + = debug))
 
     int Ipv;           // The ip versions (can be unused)  
     struct ether_header *eth_header;
@@ -59,7 +59,7 @@ struct trameinfo
 char *INT2MAC(uint8_t *val, char *buf);
 
 /**
- * @brief Write a the foramt in the bufverbose
+ * @brief Write a the format in the bufverbose (into trameinfo). This function handle memory size
  */
 void WriteInBuf(struct trameinfo *trameinfo, char *format, ...);
 

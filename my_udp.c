@@ -53,7 +53,7 @@ int DecodeUDP(const u_char *packet, struct trameinfo *trameinfo)
 
     trameinfo->cur += 8;
 
-    beSUDPtoh(udp); // change packet ideal ou pas ? 
+    beSUDPtoh(udp); 
     if (trameinfo->verbose > 1)
         VerboseUDP(trameinfo);
 

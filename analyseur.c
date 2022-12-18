@@ -7,16 +7,28 @@ void error(pcap_t *p, char *prefix)
     exit(1);
 }
 
-// idée algo au fur et a mesure des decapsulations on met les header dans trameinfo puis a la fin d'un ecaplulation (aka il n'y a plus rien aprés bootp ou si pb) on affiche les infos accumulée ainsi on afficher la version verbose 0 IP S_ip:Port --> D_ip:Port Proto et petite exeplication.
 
 void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *packet)
 {
     struct arg *arg = (struct arg *)args;
 
-    if (arg->starttime < 0)
+    if (arg->starttime < 0)                 // Si le l'input est un fichier alors on set le temps au premier paquet 
         arg->starttime = header->ts.tv_sec;
 
-    printf("%s-%li-%s ", GREEN, header->ts.tv_sec - arg->starttime, RESET);
+    if (arg->verbose > 3)                   //Print le paquet (notamment pour debuger)
+    {
+        for (int i = 1; i - 1 < (int)header->len; i++)
+        {
+            printf("%2.2X", packet[i - 1]);
+            if (!(i % 16))
+                printf("\n");
+            else if (!(i % 2))
+                printf(" ");
+        }
+        printf("\n");
+    }
+
+    printf("%s-%li-%s ", GREEN, header->ts.tv_sec - arg->starttime, RESET);     
 
     struct trameinfo trameinfo;
 
@@ -38,19 +50,8 @@ void callback(u_char *args, const struct pcap_pkthdr *header, const u_char *pack
     trameinfo.size_buf = BUFVERBOSE_INITSIZE;
     trameinfo.write_buf = 0;
 
-    if (arg->verbose > 3)
-    {
-        for (int i = 1; i - 1 < (int)header->len; i++)
-        {
-            printf("%2.2X", packet[i - 1]);
-            if (!(i % 16))
-                printf("\n");
-            else if (!(i % 2))
-                printf(" ");
-        }
-    }
-    DecodeEthernet(packet, &trameinfo);
-    if (trameinfo.verbose > 1)
+    DecodeEthernet(packet, &trameinfo);         //On commence par decoder la trame ethernet (les autres decode se feront dans ethernet puis ip ...)
+    if (trameinfo.verbose > 1)                  // Si il y a de la verbose print les info contenu dans le buffeur
     {
         printf("%s", trameinfo.bufverbose);
         free(trameinfo.bufverbose);
@@ -72,11 +73,11 @@ int main(int argc, char **argv)
     struct arg arg;
     struct options_t options;
 
-    parseArgs(argc, argv, &options);
+    parseArgs(argc, argv, &options);    //Parse les arguments
 
     arg.verbose = options.verbose;
 
-    if (!options.colors)
+    if (!options.colors)                // Annulles les couleurs
     {
         GREEN = "";
         BLUE = "";
