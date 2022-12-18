@@ -12,7 +12,7 @@ void VerboseEth(struct trameinfo *t)
     if (t->verbose > 2)
         WriteInBuf(t,"Source = %s, Destination = %s, ", bufsourc, bufdest);
     WriteInBuf(t," Data type =");
-    uint32_t ethType = ((ether_header->ether_type << 8) + (ether_header->ether_type >> 8)) & (0x0000000FFFF); // INverboseersion ABCD --> CDAB
+    uint32_t ethType = ((ether_header->ether_type << 8) + (ether_header->ether_type >> 8)) & (0x0000000FFFF); // Iversion ABCD --> CDAB
     switch (ethType)
     {
     case (0x0800):
@@ -28,7 +28,7 @@ void VerboseEth(struct trameinfo *t)
         WriteInBuf(t,"IPv6");
         break;
     default:
-        WriteInBuf(t,"Unreconize Data Type %x", ethType); //?
+        WriteInBuf(t,"Unreconize Data Type %x", ethType); 
     }
     WriteInBuf(t," ");
 }

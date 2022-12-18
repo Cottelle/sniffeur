@@ -26,12 +26,7 @@ struct options_t {
     unsigned int count;
 };
 
-void initOptions(struct options_t *options);
 
 void parseArgs(int argc, char **argv, struct options_t *options);
-
-void checkOptionsValidity(struct options_t *options);
-
-void cleanOptions(struct options_t *options);
 
 #endif

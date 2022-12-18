@@ -45,7 +45,7 @@ struct trameinfo
 
     char *bufverbose; // the buffer where the additional info are put, print a the end of the parsing
     int size_buf;     // the dynamic size of the buf
-    int write_buf;    // the start of free place on this buf
+    int write_buf;    // the start of d place on this buf
 
 
 };

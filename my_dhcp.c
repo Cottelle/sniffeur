@@ -64,7 +64,7 @@ void VerboseDHCP(struct dhcp dhcps[64], struct trameinfo *t)
                     printf("%s ", inet_ntoa(*(struct in_addr *)(dhcps[i].str)));
                 else if (i == 12 || i == 15)
                     printf("%s ", dhcps[i].str);
-                else if (i == 2 || i == 44 || i == 47 || i == 51) // a peut être verifier
+                else if (i == 2 || i == 44 || i == 47 || i == 51)
                 {
                     unsigned long long sum = 0;
                     for (int j = 0; j < dhcps[i].size; j++)
@@ -115,7 +115,7 @@ void DecodeDHCP(const u_char *vend, struct trameinfo *trameinfo)
     memset(dhcps, 0, 64 * sizeof(struct dhcp));
     while (vend[i] != 0xff)
     {
-        dhcps[vend[i]].str = vend + i + 2; // evite de faire une structure, alege le code au detriment de la mémoire.
+        dhcps[vend[i]].str = vend + i + 2; // evite de faire une structure, alege le code au determinant de la mémoire.
         dhcps[vend[i]].size = vend[i + 1];
         dhcps[vend[i]].present = 1;
         i += vend[i + 1] + 2;
